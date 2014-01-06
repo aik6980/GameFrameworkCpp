@@ -1,0 +1,157 @@
+//--------------------------------------------------
+// File:    GLTechnique.cpp
+// Created: 01/12/2013 15:16:29
+//
+// Description: $
+//
+
+//--------------------------------------------------
+
+// local includes //////////////////////////////////
+#include "stdafx.h"
+#include "GLTechnique.h" 
+
+#include "Global.h"
+#include "RenderDevice/GLRenderer/GLDevice.h"
+
+CGLCommonGpuProgram::CGLCommonGpuProgram()
+	: m_ShaderProgramHandle(0)
+{
+
+}
+
+CGLCommonGpuProgram::~CGLCommonGpuProgram()
+{
+	glDeleteShader(m_ShaderProgramHandle);
+}
+
+bool CGLCommonGpuProgram::Compile( const fs::path & fn )
+{
+	// open file and load into string
+	string shader_srctxt;
+	ifstream input_file(fn.string());
+	if(input_file.is_open())
+	{
+		// read the whole file into string
+		std::string str((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
+		shader_srctxt = str;
+		input_file.close();
+	}
+	else
+	{
+		// output error
+		return false;
+	}
+
+	GLint shaderType = ShaderType();
+	GLuint shaderObjHandle = glCreateShader(shaderType);
+
+	// compile
+	const GLchar* shaderSrcArray[] = { shader_srctxt.c_str() };
+	glShaderSource(shaderObjHandle, 1, shaderSrcArray, nullptr);
+	glCompileShader(shaderObjHandle);
+
+	// check if there is any error
+	GLint result;
+	glGetShaderiv(shaderObjHandle, GL_COMPILE_STATUS, &result);
+	if(result == GL_FALSE)
+	{
+		glGetShaderiv(shaderObjHandle, GL_INFO_LOG_LENGTH, &result);
+		char* errorStr = new char[result];
+
+		glGetShaderInfoLog(shaderObjHandle, result, nullptr, errorStr);
+		Debug::Print(boost::wformat(TEXT("glGetShaderInfoLog : %1%")) % errorStr);
+
+		Safe_Delete(errorStr);
+		return false;
+	}
+
+	m_ShaderProgramHandle = shaderObjHandle;
+	return true;
+}
+
+
+CGLRenderTechnique::CGLRenderTechnique()
+	: m_TechniqueHandle(0)
+{
+	m_Shaders.assign(nullptr);
+}
+
+bool CGLRenderTechnique::Load( Renderer::ShaderType t, const fs::path & fn )
+{
+	m_Shaders[t] = CreateAndCompile(t, fn);
+
+	// PixelShader will be loaded at the last one, so perform linking step here 
+	if(t == Renderer::SHA_PIXEL_SHADER)
+	{
+		return LinkShaders();
+	}
+
+	return true;
+}
+
+CGLCommonGpuProgram* CGLRenderTechnique::CreateAndCompile( Renderer::ShaderType t, const fs::path & fn)
+{
+	CGLCommonGpuProgram* newShader = nullptr;
+	switch(t)
+	{
+	case Renderer::SHA_VERTEX_SHADER:	newShader = new CGLVertexShader(); break;
+	case Renderer::SHA_PIXEL_SHADER:	newShader = new CGLPixelShader(); break;
+	default:
+		Debug::Assert(false, "CreateAndCompile() Failed");
+		return nullptr;
+	}
+
+	newShader->Compile(fn);
+	return newShader;
+}
+
+bool CGLRenderTechnique::LinkShaders()
+{
+	m_TechniqueHandle = glCreateProgram();
+	for(uint32_t i=0; i<m_Shaders.size(); ++i)
+	{
+		if(m_Shaders[i] && m_Shaders[i]->ShaderProgramHandle() != 0)
+		{
+			glAttachShader(m_TechniqueHandle, m_Shaders[i]->ShaderProgramHandle());
+		}
+	}
+
+	glLinkProgram(m_TechniqueHandle);
+
+	// check if there is any error
+	GLint result;
+	glGetProgramiv(m_TechniqueHandle, GL_LINK_STATUS, &result);
+	if(result == GL_FALSE)
+	{
+		glGetProgramiv(m_TechniqueHandle, GL_INFO_LOG_LENGTH, &result);
+		char* errorStr = new char[result];
+
+		glGetProgramInfoLog(m_TechniqueHandle, result, nullptr, errorStr);
+		Debug::Print(boost::wformat(TEXT("glGetProgramInfoLog : %1%")) % errorStr);
+
+		Safe_Delete(errorStr);
+		return false;
+	}
+
+	return true;
+}
+
+void CGLRenderTechnique::Apply()
+{
+	CGLVertexShader* vs = GetShader<CGLVertexShader>(Renderer::SHA_VERTEX_SHADER);
+	if(vs)
+	{
+		Global().Renderer().SetVertexInputLayout(vs->InputLayout());
+		glUseProgram(m_TechniqueHandle);
+	}
+	else
+	{
+		glUseProgram(0);
+	}
+}
+
+// eof /////////////////////////////////////////////
+
+
+
