@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)..\..\Bin\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntDir>$(SolutionDir)..\..\Temp\Int\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <BuildLogFile>$(SolutionDir)\..\..\Temp\Int\$(Configuration)\$(ProjectName).log</BuildLogFile>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Source\;$(SolutionDir)\Source\Core;$(SolutionDir)\Source\Engine;$(SolutionDir)\..\..\..\..\External;$(SolutionDir)\..\..\..\..\External\LibBoost153;$(SolutionDir)\..\..\..\..\External\LibBoost;$(SolutionDir)\..\..\..\..\External\Lua51\src;$(SolutionDir)\..\..\..\..\External\glew-1.10.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\..\..\..\External\LibBoost153\stage\lib;$(SolutionDir)\..\..\..\..\External\LibBoost\stage\lib;$(SolutionDir)\..\..\..\..\External\Lua51\src;$(SolutionDir)\..\..\..\..\External\glew-1.10.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
