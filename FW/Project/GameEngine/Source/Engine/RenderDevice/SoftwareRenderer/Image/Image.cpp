@@ -22,7 +22,7 @@ CImage8888 CImageF32::ToImage8888()
 	result.Resize(m_Width, m_Height);
 	for(uint32_t i=0; i< m_Width * m_Height; ++i)
 	{
-		result.GetRawData()[i] = glm::u32_rgba_cast(m_Data[i]);
+		result.GetRawData()[i] = glm::packUnorm4x8(m_Data[i]);
 	}
 
 	return result;

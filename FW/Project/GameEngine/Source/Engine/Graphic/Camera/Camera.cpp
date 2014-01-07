@@ -39,7 +39,7 @@ glm::mat4 CBaseCamera::View() const
 	glm::mat4 tx_inv = glm::translate(GeomMath::ORIGIN - m_Position);
 	glm::mat4 rot_inv = glm::transpose(glm::toMat4(m_Orientation)); // rot_inv == rot_transpose
 
-	return glm::mul(rot_inv, tx_inv);
+	return rot_inv *tx_inv;
 }
 
 glm::mat4 CBaseCamera::ViewInverse() const
