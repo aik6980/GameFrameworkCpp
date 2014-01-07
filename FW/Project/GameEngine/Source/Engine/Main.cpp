@@ -40,7 +40,7 @@ void MyGame::OnUpdate()
 // main program entry point
 int main(int numArgs, char** args)
 {
-	if(numArgs==0)
+	if(numArgs==1)
 	{
 		Debug::Print("Start GameMode");
 		MyGame::Run(0, NULL);
