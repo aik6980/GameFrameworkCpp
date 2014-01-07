@@ -181,4 +181,10 @@
 
 #pragma message("... Engine/Graphic/View/RenderView.cpp")
 #include "Engine/Graphic/View/RenderView.cpp"
+
+#pragma message("... Engine/Resource/GLSLParser/GLSLParser.cpp")
+#include "Engine/Resource/GLSLParser/GLSLParser.cpp"
+
+#pragma message("... Engine/Resource/GLSLParser/Regex/Regex.cpp")
+#include "Engine/Resource/GLSLParser/Regex/Regex.cpp"
 // eof /////////////////////////////////////////////////////

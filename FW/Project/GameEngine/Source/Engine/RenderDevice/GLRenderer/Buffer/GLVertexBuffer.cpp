@@ -31,8 +31,11 @@ GLuint CGLCommonBuffer::MapToGLBufferUsage( BufferUsageEnum e )
 
 CGLCommonBuffer::~CGLCommonBuffer()
 {
-	glInvalidateBufferData(m_BufferHandle);
-	glDeleteBuffers(1, &m_BufferHandle);
+	if(m_BufferHandle)
+	{
+		glInvalidateBufferData(m_BufferHandle);
+		glDeleteBuffers(1, &m_BufferHandle);
+	}
 }
 
 void CGLVertexBufferCommon::SetBuffer()

@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnityDebug|Win32">
+      <Configuration>UnityDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="UnityDebug|x64">
+      <Configuration>UnityDebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Build\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Build\UnityBuildFile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Boost\BoostHelper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Debug\DebugPrint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\FileSystem\FileSystem.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Math\Geometric\Helper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Math\Matrix.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Math\Noise\Noise.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Math\Tuple4.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Math\UnitTest\UnitTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Math\Vector.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Memory\Memory.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\STL\STLHelper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Timer\Timer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Core\UIDSystem\UID.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Application\BaseApplication.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Application\GameApplication.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Application\WinGameApplication.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Database\FreeCameraController.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Database\Player.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Global.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Camera\Camera.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\GeomCreator\GeomCreator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Graphic.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Renderer\RigidRenderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Shaders\BaseShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Shaders\RigidShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Shaders\SpriteShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Renderer\SpriteRenderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\View\MainView.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\View\RenderView.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Input\InputManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11Device.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11VertexBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11Viewport.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\D3dMcr.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\Device3DCommand\Device3DCmd.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11ConstantBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11GpuProgParam.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11RenderState.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11SamplerState.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11Technique.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Surface.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture2D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLConstantBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexInputLayout.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\GLDevice.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\GpuProgram\GLTechnique.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\SoftwareRenderer\Image\Color.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\SoftwareRenderer\Image\Image.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Resource\GLSLParser\GLSLParser.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Resource\GLSLParser\Regex\Regex.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Resource\Lua\LuaHelper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Resource\ResourceManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Scene\Scene.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Scene\World.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Build\stdafx.h" />
+    <ClInclude Include="Source\Core\Boost\BoostDefines.h" />
+    <ClInclude Include="Source\Core\Boost\BoostHelper.h" />
+    <ClInclude Include="Source\Core\Core.h" />
+    <ClInclude Include="Source\Core\CoreCpp.h" />
+    <ClInclude Include="Source\Core\Debug\DebugPrint.h" />
+    <ClInclude Include="Source\Core\FileSystem\FileSystem.h" />
+    <ClInclude Include="Source\Core\Math\D3d11MathDefines.h" />
+    <ClInclude Include="Source\Core\Math\Geometric\Helper.h" />
+    <ClInclude Include="Source\Core\Math\Math.h" />
+    <ClInclude Include="Source\Core\Math\MathCpp.h" />
+    <ClInclude Include="Source\Core\Math\Matrix.h" />
+    <ClInclude Include="Source\Core\Math\Noise\Noise.h" />
+    <ClInclude Include="Source\Core\Math\Tuple4.h" />
+    <ClInclude Include="Source\Core\Math\UnitTest\UnitTest.h" />
+    <ClInclude Include="Source\Core\Math\Vector.h" />
+    <ClInclude Include="Source\Core\Memory\Memory.h" />
+    <ClInclude Include="Source\Core\Misc\Flag.h" />
+    <ClInclude Include="Source\Core\STL\STLDefines.h" />
+    <ClInclude Include="Source\Core\STL\STLHelper.h" />
+    <ClInclude Include="Source\Core\TargetDefines.h" />
+    <ClInclude Include="Source\Core\Timer\Timer.h" />
+    <ClInclude Include="Source\Core\UIDSystem\UID.h" />
+    <ClInclude Include="Source\Engine\Application\BaseApplication.h" />
+    <ClInclude Include="Source\Engine\Application\BaseApplicationMacros.h" />
+    <ClInclude Include="Source\Engine\Application\GameApplication.h" />
+    <ClInclude Include="Source\Engine\Application\WinGameApplication.h" />
+    <ClInclude Include="Source\Engine\Database\FreeCameraController.h" />
+    <ClInclude Include="Source\Engine\Database\GameObject.h" />
+    <ClInclude Include="Source\Engine\Database\Player.h" />
+    <ClInclude Include="Source\Engine\Global.h" />
+    <ClInclude Include="Source\Engine\Graphic\Renderer\RigidRenderer.h" />
+    <ClInclude Include="Source\Engine\Graphic\Shaders\BaseShader.h" />
+    <ClInclude Include="Source\Engine\Graphic\Camera\Camera.h" />
+    <ClInclude Include="Source\Engine\Graphic\GeomCreator\GeomCreator.h" />
+    <ClInclude Include="Source\Engine\Graphic\Graphic.h" />
+    <ClInclude Include="Source\Engine\Graphic\Renderer\BaseRenderer.h" />
+    <ClInclude Include="Source\Engine\Graphic\Shaders\RigidShader.h" />
+    <ClInclude Include="Source\Engine\Graphic\Shaders\SpriteShader.h" />
+    <ClInclude Include="Source\Engine\Graphic\Renderer\SpriteRenderer.h" />
+    <ClInclude Include="Source\Engine\Graphic\View\MainView.h" />
+    <ClInclude Include="Source\Engine\Graphic\View\RenderView.h" />
+    <ClInclude Include="Source\Engine\Input\InputManager.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11Defines.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11Device.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11VertexBuffer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11Viewport.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\D3dMcr.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Device3DCommand\Device3DCmd.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11ConstantBuffer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11GpuProgParam.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11GpuProgramManager.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11RenderState.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11SamplerState.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\GpuProgram\D3d11Technique.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Surface.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture2D.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLConstantBuffer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexBuffer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexInputLayout.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDefines.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDevice.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GpuProgram\GLTechnique.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\RenderDevice.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\RenderDeviceCpp.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\Renderer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\SoftwareRenderer\Image\Color.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\SoftwareRenderer\Image\Image.h" />
+    <ClInclude Include="Source\Engine\Resource\GLSLParser\GLSLParser.h" />
+    <ClInclude Include="Source\Engine\Resource\GLSLParser\Regex\Regex.h" />
+    <ClInclude Include="Source\Engine\Resource\Lua\LuaDefines.h" />
+    <ClInclude Include="Source\Engine\Resource\Lua\LuaHelper.h" />
+    <ClInclude Include="Source\Engine\Resource\ResourceManager.h" />
+    <ClInclude Include="Source\Engine\Scene\Scene.h" />
+    <ClInclude Include="Source\Engine\Scene\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Core\FileSystem\FileSystem.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2C6FDFE6-0ED9-41AD-8DB8-862826C7C553}</ProjectGuid>
+    <RootNamespace>GameEngine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonPropSheets.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonPropSheets.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonPropSheets.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonPropSheets.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonPropSheets.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonPropSheets.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <BuildLog>
+      <Path>
+      </Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

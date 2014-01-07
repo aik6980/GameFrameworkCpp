@@ -10,7 +10,10 @@ CGLConstantBufferBase::CGLConstantBufferBase()
 
 CGLConstantBufferBase::~CGLConstantBufferBase()
 {
-	glDeleteBuffers(1, &m_BufferHandle);
+	if(m_BufferHandle)
+	{
+		glDeleteBuffers(1, &m_BufferHandle);
+	}
 }
 
 void CGLConstantBufferBase::SetBuffer()

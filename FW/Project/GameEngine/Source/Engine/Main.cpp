@@ -38,7 +38,18 @@ void MyGame::OnUpdate()
 }
 
 // main program entry point
-int main()
+int main(int numArgs, char** args)
 {
-	MyGame::Run(0, NULL);
+	if(numArgs==0)
+	{
+		Debug::Print("Start GameMode");
+		MyGame::Run(0, NULL);
+	}
+	else
+	{
+		if(strcmp(args[1], "--ToolMode")==0)
+		{
+			Debug::Print("Start ToolMode");
+		}
+	}
 }
