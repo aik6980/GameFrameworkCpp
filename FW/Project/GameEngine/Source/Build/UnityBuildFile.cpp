@@ -187,4 +187,10 @@
 
 #pragma message("... Engine/Resource/GLSLParser/Regex/Regex.cpp")
 #include "Engine/Resource/GLSLParser/Regex/Regex.cpp"
+
+#pragma message("... Engine/Resource/ResourceObject.cpp")
+#include "Engine/Resource/ResourceObject.cpp"
+
+#pragma message("... Engine/RenderDevice/GLRenderer/Texture/GLTexture.cpp")
+#include "Engine/RenderDevice/GLRenderer/Texture/GLTexture.cpp"
 // eof /////////////////////////////////////////////////////

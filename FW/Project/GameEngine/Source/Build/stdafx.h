@@ -18,4 +18,9 @@
 // OpenGL
 #include "Engine/RenderDevice/GLRenderer/GLDefines.h"
 
+// GLM Math
+#include "Math/Math.h"
+
+// GLI Image Library
+
 #endif // stdafx_h__

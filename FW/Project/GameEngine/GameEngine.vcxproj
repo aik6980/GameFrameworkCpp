@@ -241,6 +241,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Texture\GLTexture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Source\Engine\RenderDevice\SoftwareRenderer\Image\Color.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -256,6 +260,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Source\Engine\Resource\Lua\LuaHelper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Resource\ResourceCpp.h" />
+    <ClCompile Include="Source\Engine\Resource\ResourceObject.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -343,6 +352,7 @@
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDefines.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDevice.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GpuProgram\GLTechnique.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Texture\GLTexture.h" />
     <ClInclude Include="Source\Engine\RenderDevice\RenderDevice.h" />
     <ClInclude Include="Source\Engine\RenderDevice\RenderDeviceCpp.h" />
     <ClInclude Include="Source\Engine\RenderDevice\Renderer.h" />
@@ -352,7 +362,9 @@
     <ClInclude Include="Source\Engine\Resource\GLSLParser\Regex\Regex.h" />
     <ClInclude Include="Source\Engine\Resource\Lua\LuaDefines.h" />
     <ClInclude Include="Source\Engine\Resource\Lua\LuaHelper.h" />
+    <ClInclude Include="Source\Engine\Resource\Resource.h" />
     <ClInclude Include="Source\Engine\Resource\ResourceManager.h" />
+    <ClInclude Include="Source\Engine\Resource\ResourceObject.h" />
     <ClInclude Include="Source\Engine\Scene\Scene.h" />
     <ClInclude Include="Source\Engine\Scene\World.h" />
   </ItemGroup>
