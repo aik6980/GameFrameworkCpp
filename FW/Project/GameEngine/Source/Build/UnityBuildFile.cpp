@@ -193,4 +193,10 @@
 
 #pragma message("... Engine/RenderDevice/GLRenderer/Texture/GLTexture.cpp")
 #include "Engine/RenderDevice/GLRenderer/Texture/GLTexture.cpp"
+
+#pragma message("... Engine/Physics/RigidBody/RigidBodySimulation.cpp")
+#include "Engine/Physics/RigidBody/RigidBodySimulation.cpp"
+
+#pragma message("... Engine/Physics/RigidBody/RigiBody.cpp")
+#include "Engine/Physics/RigidBody/RigiBody.cpp"
 // eof /////////////////////////////////////////////////////
