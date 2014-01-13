@@ -17,31 +17,35 @@
 #endif // SHOW_HEADERS
 
 // includes ////////////////////////////////////////
+#include <gli/gli.hpp>
+#include "Core/Core.h"
 
+enum eResourceType
+{
+	UNDEFINED  = -1,
+	GPUPROGRAM = 0,
+	TEXTURE,
+	MESH,
+	NUM_RESOURCETYPE,
+};
 
-// defines /////////////////////////////////////////
+class CResourceObject
+{
+public:
+	fs::path		m_Path;
+	string			m_Name;
+	eResourceType	m_Type;
 
+	uint8_t*		m_Data;
+	uint32_t		m_Size;
+};
 
-// forward declarations ////////////////////////////
-
-
-
-
-
-// type declarations (enum struct class) /////////
-
-
-// public ("extern") data declarations /////////////
-
-
-// public function declarations ////////////////////
-
-
-
-
-
-// inline file ///////////
-
+class CTextureDDSResource
+{
+public:
+private:
+	gli::storage	m_Data;
+};
 
 // eof /////////////////////////////////////////////
 

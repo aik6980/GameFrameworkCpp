@@ -31,7 +31,7 @@ public:
 private:
 	list<CRigidBody>	m_RigidBodies;
 
-	CRigidBodyContactGenerator*	m_
+	CRigidBodyContactGenerator*		m_ContactGenerator;
 };
 
 #ifdef SHOW_HEADERS

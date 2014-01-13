@@ -3,26 +3,7 @@
 #define ResourceManager_h__
 
 #include "Core.h"
-
-enum eResourceType
-{
-	UNDEFINED  = -1,
-	GPUPROGRAM = 0,
-	TEXTURE,
-	MESH,
-	NUM_RESOURCETYPE,
-};
-
-class CResourceObject
-{
-public:
-	fs::path		m_Path;
-	string			m_Name;
-	eResourceType	m_Type;
-
-	uint8_t*		m_Data;
-	uint32_t		m_Size;
-};
+#include "ResourceObject.h"
 
 class CResourceManager
 {
