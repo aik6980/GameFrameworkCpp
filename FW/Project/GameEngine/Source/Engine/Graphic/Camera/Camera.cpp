@@ -15,7 +15,9 @@
 CBaseCamera::CBaseCamera()
 	: m_Fov(BasicMath::PI/4),
 	m_ZNear(0.1f),
-	m_ZFar(1000.0f)
+	m_ZFar(1000.0f),
+	m_ProjectionMode(PERSPECTIVE),
+	m_OrthographicHeight(20.0f)
 {
 	ZeroMemory(&m_ViewportDesc, sizeof(m_ViewportDesc));
 	m_ViewportDesc.Width = Renderer::SCREEN_WIDTH;
@@ -52,7 +54,18 @@ glm::mat4 CBaseCamera::ViewInverse() const
 glm::mat4 CBaseCamera::Projection() const
 {
 	float aspect = (float)m_ViewportDesc.Width/m_ViewportDesc.Height;
-	return GeomMath::CreateProjPerspective(m_Fov, aspect, m_ZNear, m_ZFar);
+	switch(m_ProjectionMode)
+	{
+	case ORTHO:
+		{
+			float half_w = aspect * m_OrthographicHeight * 0.5f;
+			float half_h = m_OrthographicHeight * 0.5f; 
+			return glm::ortho(-half_w, half_w, -half_h, half_h, m_ZNear, m_ZFar);
+		}
+	case PERSPECTIVE:
+	default:
+		return GeomMath::CreateProjPerspective(m_Fov, aspect, m_ZNear, m_ZFar);
+	}
 }
 
 glm::mat4 CBaseCamera::ViewProjection() const

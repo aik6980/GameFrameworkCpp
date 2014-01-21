@@ -7,6 +7,12 @@
 class CBaseCamera
 {
 public:
+	enum ProjectionMode
+	{
+		PERSPECTIVE,
+		ORTHO,
+	};
+
 	CBaseCamera();
 
 	glm::mat4	View() const;
@@ -22,8 +28,10 @@ private:
 	glm::vec3		m_Position;
 	glm::quat		m_Orientation;
 
+	ProjectionMode			m_ProjectionMode;
 	float					m_Fov;
 	float					m_ZNear, m_ZFar;
+	float					m_OrthographicHeight;
 	Renderer::ViewportDesc	m_ViewportDesc;
 };
 
