@@ -2,6 +2,7 @@
 #include "Global.h"
 
 #include "Core/CoreCpp.h"
+#include "Physics/PhysicsCpp.h"
 #include "Resource/ResourceManager.h"
 #include "RenderDevice/RenderDeviceCpp.h"
 #include "Input/InputManager.h"
@@ -12,6 +13,7 @@
 CResourceManager*	Global::m_ResourceManager	= new CResourceManager();
 CGLDevice*			Global::m_GLRenderer		= new CGLDevice();
 CInputManager*		Global::m_InputManager		= new CInputManager();
+CRigidBodyManager*	Global::m_RigidBodyManager  = new CRigidBodyManager();
 
 CScene*				Global::m_Scene				= new CScene();
 CWorld*				Global::m_World				= new CWorld();

@@ -17,14 +17,29 @@
 #endif // SHOW_HEADERS
 
 // includes ////////////////////////////////////////
-
+#include "Core/Core.h"
+#include "Particle.h"
 
 // type declarations (enum struct class) /////////
 class CRigidBody
 {
 public:
-	void ClearAccumulator();
+	CRigidBody();
+
+	void	ClearAccumulator();
 private:
+	// Particle representation
+	void	CreateParticles();
+
+	// Basic Dynamic
+	glm::vec3	m_Position;
+	glm::vec3	m_Velocity;
+
+	// Particle representation
+	// default as a cube
+	float		m_Size;
+
+	vector<CParticle>	m_Particles;
 };
 
 #ifdef SHOW_HEADERS

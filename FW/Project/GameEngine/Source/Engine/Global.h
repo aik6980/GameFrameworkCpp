@@ -8,6 +8,7 @@ class CD3d11Device;
 class CGLDevice;
 class CResourceManager;
 class CInputManager;
+class CRigidBodyManager;
 
 class CScene;
 class CWorld;
@@ -28,6 +29,7 @@ public:
 	static CGLDevice &			Renderer()			{ return *m_GLRenderer; }
 	static CResourceManager &	ResourceManager()	{ return *m_ResourceManager; }
 	static CInputManager &		InputManager()		{ return *m_InputManager; }
+	static CRigidBodyManager &	RigidBodyManager()	{ return *m_RigidBodyManager; }
 
 	static CScene &				Scene()				{ return *m_Scene; }
 	static CWorld &				World()				{ return *m_World; }
@@ -37,6 +39,8 @@ private:
 	static CResourceManager*	m_ResourceManager;
 	static CGLDevice*			m_GLRenderer;
 	static CInputManager*		m_InputManager;
+
+	static CRigidBodyManager*	m_RigidBodyManager;
 
 	static CScene*				m_Scene;
 	static CWorld*				m_World;

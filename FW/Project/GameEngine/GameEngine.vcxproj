@@ -173,6 +173,7 @@
     </ClCompile>
     <ClCompile Include="Source\Engine\Physics\Collision\BoundingVolume.cpp" />
     <ClCompile Include="Source\Engine\Physics\Collision\CollisionDetection.cpp" />
+    <ClCompile Include="Source\Engine\Physics\RigidBody\Particle.cpp" />
     <ClCompile Include="Source\Engine\Physics\RigidBody\RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -347,6 +348,7 @@
     <ClInclude Include="Source\Engine\Physics\Collision\CollisionDetection.h" />
     <ClInclude Include="Source\Engine\Physics\Physics.h" />
     <ClInclude Include="Source\Engine\Physics\PhysicsCpp.h" />
+    <ClInclude Include="Source\Engine\Physics\RigidBody\Particle.h" />
     <ClInclude Include="Source\Engine\Physics\RigidBody\RigidBody.h" />
     <ClInclude Include="Source\Engine\Physics\RigidBody\RigidBodySimulation.h" />
     <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\D3d11Defines.h" />
