@@ -11,9 +11,9 @@
 #endif
 
 // compiler predefined directive
-#define _VC2008COMPILER_	(_MSC_VER == 1500)
 #define _VC2010COMPILER_	(_MSC_VER == 1600)
 #define _VC2012COMPILER_	(_MSC_VER == 1700)
+#define _VC2013COMPILER_	(_MSC_VER == 1800)
 #define _INTELCOMPILER_		(__INTEL_COMPILER)	
 
 

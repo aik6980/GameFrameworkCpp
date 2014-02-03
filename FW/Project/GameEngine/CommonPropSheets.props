@@ -16,11 +16,11 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(DXSDK_DIR)\Include;$(SolutionDir)\Source;$(SolutionDir)\Source\Core;$(SolutionDir)\Source\Engine;$(SolutionDir)\Source\Lib\Gli;$(SolutionDir)\Source\Lib\Glm;$(SolutionDir)\..\..\..\..\External;$(SolutionDir)\..\..\..\..\External\LibBoost153;$(SolutionDir)\..\..\..\..\External\Lua51\src;$(SolutionDir)\..\..\..\..\External\glew-1.10.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)\Include;$(SolutionDir)\Source;$(SolutionDir)\Source\Core;$(SolutionDir)\Source\Engine;$(SolutionDir)\Source\Lib\Gli;$(SolutionDir)\Source\Lib\Glm;$(SolutionDir)\..\..\..\..\External;$(SolutionDir)\..\..\..\..\External\LibBoost;$(SolutionDir)\..\..\..\..\External\Lua51\src;$(SolutionDir)\..\..\..\..\External\glew-1.10.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;$(SolutionDir)\..\..\..\..\External\LibBoost153\stage\lib;$(SolutionDir)\..\..\..\..\External\Lua51\src;$(SolutionDir)\..\..\..\..\External\glew-1.10.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;$(SolutionDir)\..\..\..\..\External\LibBoost\stage\lib;$(SolutionDir)\..\..\..\..\External\Lua51\src;$(SolutionDir)\..\..\..\..\External\glew-1.10.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

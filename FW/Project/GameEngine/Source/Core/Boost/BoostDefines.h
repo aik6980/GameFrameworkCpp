@@ -8,22 +8,22 @@
 #ifdef BUILD_DEBUG
 	#if _INTELCOMPILER_
 		#pragma comment(lib, "libboost_filesystem-iw-mt-gd.lib")
-	#elif _VC2008COMPILER_
-		#pragma comment(lib, "libboost_filesystem-vc90-mt-gd-1_52.lib")
 	#elif _VC2010COMPILER_
 		#pragma comment(lib, "libboost_filesystem-vc100-mt-gd-1_52.lib")
 	#elif _VC2012COMPILER_
 		#pragma comment(lib, "libboost_filesystem-vc110-mt-gd-1_53.lib")
+	#elif _VC2013COMPILER_
+		#pragma comment(lib, "libboost_filesystem-vc120-mt-gd-1_55.lib")
 	#endif
 #else
 	#if _INTELCOMPILER_
 		#pragma comment(lib, "libboost_filesystem-iw-mt.lib")
-	#elif _VC2008COMPILER_
-		#pragma comment(lib, "libboost_filesystem-vc90-mt-1_52.lib")
 	#elif _VC2010COMPILER_
 		#pragma comment(lib, "libboost_filesystem-vc100-mt-1_52.lib")
 	#elif _VC2012COMPILER_
 		#pragma comment(lib, "libboost_filesystem-vc110-mt-1_53.lib")
+	#elif _VC2013COMPILER_
+		#pragma comment(lib, "libboost_filesystem-vc120-mt-1_55.lib")
 	#endif
 #endif
 
