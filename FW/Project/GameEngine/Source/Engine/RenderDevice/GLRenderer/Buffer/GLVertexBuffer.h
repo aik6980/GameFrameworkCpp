@@ -107,10 +107,18 @@ public:
 	virtual GLuint	TargetType		() const { return GL_ELEMENT_ARRAY_BUFFER; };
 	void			SetData			(const vector<T>& data);
 
+	void			SetBuffer();
 	void			DrawInstancing	(const uint32_t numInstances);
 private:
 	uint32_t		m_NumIndices;
 };
+
+template<class T>
+void CGLIndexBuffer<T>::SetBuffer()
+{
+	Global().Renderer().BindVertexArray();
+	glBindBuffer(TargetType(), m_BufferHandle);
+}
 
 template<class T>
 void CGLIndexBuffer<T>::SetData( const vector<T>& data )
@@ -133,7 +141,8 @@ void CGLIndexBuffer<T>::DrawInstancing( const uint32_t numInstances )
 	Global().Renderer().BindVertexArray();
 
 	glBindBuffer(TargetType(), m_BufferHandle);
-	glDrawElementsInstanced(GL_TRIANGLES, m_NumIndices, GL_UNSIGNED_INT, 0, numInstances);
+	//glDrawElementsInstanced(GL_TRIANGLES, m_NumIndices, GL_UNSIGNED_INT, 0, numInstances);
+	glDrawElementsInstancedBaseVertexBaseInstance(GL_TRIANGLES, m_NumIndices, GL_UNSIGNED_INT, 0, numInstances,0, 0);
 }
 
 // eof /////////////////////////////////////////////

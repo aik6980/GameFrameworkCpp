@@ -38,7 +38,8 @@ out block
 
 void main()
 {
-	vec4 pos		= vec4( Rotation(INST_ROTATION, POSITION), 1.0);
+	vec4 pos		= vec4( Rotation(INST_ROTATION, POSITION * (1 + gl_InstanceID/16.0)), 1.0);
+	pos.xyz			+= INST_POSITION.xyz;
 	pos				= CbViewCommon.ViewXf * pos;
 	pos				= CbViewCommon.ProjectionXf * pos;
 	gl_Position 	= pos;

@@ -12,17 +12,33 @@
 
 #include "Core/CoreCpp.h"
 
-CInputManager::CInputManager()
+CInputManager::CInputManager(HWND hwnd)
+: m_hwnd(hwnd),
+m_CurrCursorPosition(0, 0, 0),
+m_PrevCursorPosition(0, 0, 0)
 {
 	memset(m_CurrKeyState, 0, sizeof(m_CurrKeyState));
 }
 
 void CInputManager::Update()
 {
+	// store key states
 	memcpy(m_PrevKeyState, m_CurrKeyState, sizeof(m_CurrKeyState));
 	for(int i=0;i<256;++i)
 	{
 		m_CurrKeyState[i] = GetAsyncKeyState(i) & 0x8000 ? 1 : 0;
+	}
+	
+	// store cursor state
+	m_PrevCursorPosition = m_CurrCursorPosition;
+	POINT clientPos;
+	if (GetCursorPos(&clientPos))
+	{
+		if (ScreenToClient(m_hwnd, &clientPos))
+		{
+			m_CurrCursorPosition[0] = (float)clientPos.x;
+			m_CurrCursorPosition[1] = (float)clientPos.y;
+		}
 	}
 }
 

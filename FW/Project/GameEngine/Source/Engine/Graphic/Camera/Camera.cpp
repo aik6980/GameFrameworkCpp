@@ -72,10 +72,3 @@ glm::mat4 CBaseCamera::ViewProjection() const
 {
 	return View() * Projection();
 }
-
-glm::vec3 CBaseCamera::Forward() const
-{
-	glm::mat4 m = glm::toMat4(m_Orientation);
-	// using OpenGL convention here, we are looking down -z axis (assuming we are looking into the screen, x-right y-up)
-	return -glm::vec3(m[3]);
-}

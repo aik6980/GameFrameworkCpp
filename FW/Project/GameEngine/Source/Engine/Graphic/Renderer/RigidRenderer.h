@@ -60,6 +60,9 @@ private:
 	vector<CRigidShader::INSTANCE_DATA>				m_InstanceData;
 	CGLVertexBuffer<CRigidShader::INSTANCE_DATA>	m_InstanceVB;
 
+	// Indirect Draw Buffer
+	CGLDrawIndirectBuffer<GLDrawElementsIndirectCommand>	m_DrawElementsCommand;
+
 	// InstanceRenderData
 
 	list<shared_ptr<CRigidInstanceRenderData>>		m_RigidInstances;

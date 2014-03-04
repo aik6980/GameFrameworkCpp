@@ -17,22 +17,21 @@
 
 void CWorld::Initialize()
 {
+	auto player = CPlayer::CreateObject();
+	m_GameObjects.push_back(player);
 	{
-		CPlayer* newObj = CPlayer::CreateObject();
-		m_GameObjects.push_back(newObj);
-	}
-
-	{
-		CFreeCamera* newObj = new CFreeCamera();
-		newObj->Position(glm::vec3(0,0,10));
+		auto newObj = make_shared<CFollowCamera>();
+		player->SetCamera(newObj);
 		Global::Scene().AddCameraToView(MAINGAME_VIEW, *newObj);
 	}
+
+	player->m_Position = glm::vec3(0, 0, 10);
 }
 
 void CWorld::Update()
 {
 	for_each(m_GameObjects.begin(), m_GameObjects.end(),
-		[](CBaseGameObject*	it)
+		[](shared_ptr<CBaseGameObject> it)
 		{
 			it->Update();
 		});

@@ -10,6 +10,7 @@
 // OpenGL
 #include "RenderDevice/GLRenderer/Buffer/GLConstantBuffer.h"
 #include "RenderDevice/GLRenderer/Buffer/GLVertexBuffer.h"
+#include "RenderDevice/GLRenderer/Buffer/GLDrawIndirectBuffer.h"
 
 // Forward Declaration
 class CD3d11Device;

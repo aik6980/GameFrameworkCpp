@@ -11,7 +11,7 @@ public:
 	void	Update();
 
 private:
-	vector<CBaseGameObject*> m_GameObjects;
+	vector<shared_ptr<CBaseGameObject>> m_GameObjects;
 };
 
 #endif // World_h__

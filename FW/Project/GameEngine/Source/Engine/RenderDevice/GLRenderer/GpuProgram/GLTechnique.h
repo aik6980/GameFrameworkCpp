@@ -59,6 +59,13 @@ public:
 private:
 };
 
+class CGLComputeShader : public CGLCommonGpuProgram
+{
+public:
+	virtual GLint	ShaderType()	{ return GL_COMPUTE_SHADER; }
+	virtual void	Apply()			{};
+};
+
 
 class CGLRenderTechnique
 {

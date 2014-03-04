@@ -10,16 +10,24 @@
 #include "stdafx.h" 
 #include "Player.h" 
 
-CPlayer* CPlayer::CreateObject()
+shared_ptr<CPlayer> CPlayer::CreateObject()
 {
-	CPlayer* obj = new CPlayer();
+	auto obj = make_shared<CPlayer>();
+	obj->m_CameraController.SetParent(obj);
 
 	// register with sub systems
 
 	return obj;
 }
 
-void CPlayer::Update()
+CPlayer::CPlayer()
 {
 
+}
+
+void CPlayer::Update()
+{
+	m_CameraController.Update();
+	m_PlayerControlCamera->Position(m_Position);
+	m_PlayerControlCamera->Orientation(m_Orientation);
 }

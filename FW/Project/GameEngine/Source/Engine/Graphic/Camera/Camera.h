@@ -20,10 +20,10 @@ public:
 	glm::mat4	Projection() const;
 	glm::mat4	ViewProjection() const;
 
-	glm::vec3	Forward() const;
-
 	void	SetOrientation(const glm::vec3& lookAt);
-	void	Position(const glm::vec3& p)	{ m_Position = p; } 
+	
+	void	Position(const glm::vec3& p)	{ m_Position = p; }
+	void	Orientation(const glm::quat& q)	{ m_Orientation = q; }
 private:
 	glm::vec3		m_Position;
 	glm::quat		m_Orientation;
@@ -35,18 +35,9 @@ private:
 	Renderer::ViewportDesc	m_ViewportDesc;
 };
 
-class CFreeCamera : public CBaseCamera
+class CFollowCamera : public CBaseCamera
 {
 public:
-	void MoveForward();
-	void MoveBackward();
-	void StrafeLeft();
-	void StrafeRight();
-	void MouseLook();
-
-	float	m_MoveSpeed;
-	float	m_MouseSpeed;
-private:
 };
 
 #endif // Camera_h__

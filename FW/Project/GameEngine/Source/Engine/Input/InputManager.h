@@ -5,7 +5,7 @@
 class CInputManager
 {
 public:
-	CInputManager();
+	CInputManager(HWND hwnd);
 
 	void	Update();
 
@@ -21,10 +21,17 @@ public:
 	bool	RightMouseDown() const;
 	bool	RightMousePressed() const;
 	bool	RightMouseReleased() const;
-private:
 
+	glm::vec3	CursorPosition() const	{ return m_CurrCursorPosition; }
+	glm::vec3	CursorVelocity() const	{ return m_CurrCursorPosition - m_PrevCursorPosition; }
+private:
 	bool m_CurrKeyState[256];
 	bool m_PrevKeyState[256];
+
+	glm::vec3	m_CurrCursorPosition;
+	glm::vec3	m_PrevCursorPosition;
+
+	HWND m_hwnd;
 };
 
 #endif // InputManager_h__

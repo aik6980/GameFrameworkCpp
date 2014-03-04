@@ -238,6 +238,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.cpp" />
     <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexBuffer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -367,6 +368,7 @@
     <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture.h" />
     <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture2D.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLConstantBuffer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexBuffer.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexInputLayout.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDefines.h" />

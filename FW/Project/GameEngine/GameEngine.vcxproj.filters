@@ -216,6 +216,9 @@
     <ClCompile Include="Source\Engine\Physics\RigidBody\Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Build\stdafx.h">
@@ -474,6 +477,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Engine\Physics\RigidBody\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

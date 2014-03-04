@@ -6,6 +6,7 @@
 #include "RenderDevice/RenderDeviceCpp.h"
 #include "Global.h"
 
+
 void CRigidRenderer::Render( CGLDevice& context, RenderViewID currView )
 {
 	static float t = 0;
@@ -13,12 +14,19 @@ void CRigidRenderer::Render( CGLDevice& context, RenderViewID currView )
 
 	t=Global::GameTimer().GetFrameTime();
 
-	glm::quat rot_x = glm::angleAxis(t, GeomMath::UNIT_Y);
-	glm::quat rot_y = glm::angleAxis(t, GeomMath::UNIT_Y);
-	glm::quat rot_z = glm::angleAxis(t, GeomMath::UNIT_Z);
+	glm::quat rot_x = glm::angleAxis(t * 0.01f, GeomMath::UNIT_Y);
+	glm::quat rot_y = glm::angleAxis(t * 0.01f, GeomMath::UNIT_Y);
+	glm::quat rot_z = glm::angleAxis(t * 0.01f, GeomMath::UNIT_Z);
 
-	orient = rot_z * rot_y * rot_x * orient;
-	m_InstanceData[0].Rotation = glm::vec4(orient.x, orient.y, orient.z, orient.w);
+	for (int z = 0; z < 4; ++z)
+	{
+		for (int x = 0; x < 4; ++x)
+		{
+			CRigidShader::INSTANCE_DATA& inst_data = m_InstanceData[4 * z + x];
+			orient = rot_z * rot_y * rot_x * orient;
+			inst_data.Rotation = glm::vec4(orient.x, orient.y, orient.z, orient.w);
+		}
+	}
 	m_InstanceVB.SetData(m_InstanceData);
 
 	switch(currView)
@@ -39,7 +47,11 @@ void CRigidRenderer::Render( CGLDevice& context, RenderViewID currView )
 			m_PosVB.SetBuffer();
 			m_Tex0VB.SetBuffer();
 			m_InstanceVB.SetBuffer();
-			m_IB.DrawInstancing(m_InstanceData.size());
+			// direct draw
+			//m_IB.DrawInstancing(m_InstanceData.size());
+			// indirect draw
+			m_IB.SetBuffer();
+			m_DrawElementsCommand.Draw();
 		}
 		break;
 	}
@@ -63,16 +75,31 @@ void CRigidRenderer::Init()
 
 	// InstanceData
 	{
-		CRigidShader::INSTANCE_DATA inst_data[] = 
+		m_InstanceData.clear();
+		for (int z = 0; z < 4; ++z)
 		{
-			{ glm::vec4(0, 0, 0, 1), glm::vec4(0, 0, 0, 1) },
-		};
+			for (int x = 0; x < 4; ++x)
+			{
+				float size = (4 * 3) * 0.5;
+				CRigidShader::INSTANCE_DATA inst_data;
+				inst_data.Pos = glm::vec4(x * 4 - size, 0, z * 4 - size, 1);
+				inst_data.Rotation = glm::vec4(0, 0, 0, 1);
+				m_InstanceData.push_back(inst_data);
+			}
+		}
 
-		copy(inst_data, inst_data + 1, back_inserter(m_InstanceData));
 		m_InstanceVB.InputSlot(2);
 		m_InstanceVB.BufferUsage(DYNAMIC_DRAW);
 		m_InstanceVB.SetData(m_InstanceData);
 	}
+
+	// Indirect Draw
+	vector<GLDrawElementsIndirectCommand> drawCommands;
+	{
+		GLDrawElementsIndirectCommand drawCommand(meshData.Indices.size(), m_InstanceData.size());
+		drawCommands.push_back(drawCommand);
+	}
+	m_DrawElementsCommand.SetData(drawCommands);
 }
 
 

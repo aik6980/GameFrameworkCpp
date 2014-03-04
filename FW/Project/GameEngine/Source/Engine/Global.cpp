@@ -12,7 +12,7 @@
 
 CResourceManager*	Global::m_ResourceManager	= new CResourceManager();
 CGLDevice*			Global::m_GLRenderer		= new CGLDevice();
-CInputManager*		Global::m_InputManager		= new CInputManager();
+CInputManager*		Global::m_InputManager		= nullptr;
 CRigidBodyManager*	Global::m_RigidBodyManager  = new CRigidBodyManager();
 
 CScene*				Global::m_Scene				= new CScene();
@@ -23,6 +23,8 @@ void Global::Initialize(const SInit& initData )
 {
 	m_ResourceManager->Initialize();
 	m_ResourceManager->LoadAll();
+
+	m_InputManager = new CInputManager(initData.m_WndHandle);
 
 	/*
 	{
