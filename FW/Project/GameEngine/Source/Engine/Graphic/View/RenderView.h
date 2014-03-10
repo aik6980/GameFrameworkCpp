@@ -19,7 +19,9 @@ public:
 		m_pCamera(nullptr) 
 	{};
 
-	virtual void Render(CGLDevice& context)=0;
+	virtual void PreRender(CGLDevice& context);
+	virtual void Render(CGLDevice& context)	= 0;
+	virtual void PostRender(CGLDevice& context);
 
 	const RenderViewID	GetRenderViewID	() const { return m_ViewID; }
 	void				AddRenderer		(CBaseRenderer& renderer);

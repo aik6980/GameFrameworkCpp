@@ -135,6 +135,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Renderer\BaseRenderer.cpp" />
     <ClCompile Include="Source\Engine\Graphic\Renderer\RigidRenderer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -155,6 +156,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Shaders\VFXShader.cpp" />
     <ClCompile Include="Source\Engine\Graphic\View\MainView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -342,6 +344,7 @@
     <ClInclude Include="Source\Engine\Graphic\Shaders\RigidShader.h" />
     <ClInclude Include="Source\Engine\Graphic\Shaders\SpriteShader.h" />
     <ClInclude Include="Source\Engine\Graphic\Renderer\SpriteRenderer.h" />
+    <ClInclude Include="Source\Engine\Graphic\Shaders\VFXShader.h" />
     <ClInclude Include="Source\Engine\Graphic\View\MainView.h" />
     <ClInclude Include="Source\Engine\Graphic\View\RenderView.h" />
     <ClInclude Include="Source\Engine\Input\InputManager.h" />

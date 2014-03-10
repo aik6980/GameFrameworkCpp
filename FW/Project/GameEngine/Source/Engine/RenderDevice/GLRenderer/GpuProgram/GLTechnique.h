@@ -50,6 +50,15 @@ private:
 	CGLVertexInputLayout			m_InputLayoutDesc;
 };
 
+class CGLGeometryShader : public CGLCommonGpuProgram
+{
+public:
+	virtual GLint	ShaderType()	{ return GL_GEOMETRY_SHADER; }
+	virtual void	Apply()			{};
+
+private:
+};
+
 class CGLPixelShader : public CGLCommonGpuProgram 
 {
 public:

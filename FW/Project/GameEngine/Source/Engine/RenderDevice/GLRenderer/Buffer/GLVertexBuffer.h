@@ -84,6 +84,9 @@ private:
 template<class T>
 void CGLVertexBuffer<T>::SetData( const vector<T>& data )
 {
+	if (data.empty())
+		return;
+
 	if(m_BufferHandle == 0)
 	{
 		glGenBuffers( 1, &m_BufferHandle );

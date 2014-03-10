@@ -96,6 +96,7 @@ CGLCommonGpuProgram* CGLRenderTechnique::CreateAndCompile( Renderer::ShaderType 
 	switch(t)
 	{
 	case Renderer::SHA_VERTEX_SHADER:	newShader = new CGLVertexShader(); break;
+	case Renderer::SHA_GEOM_SHADER:		newShader = new CGLGeometryShader(); break;
 	case Renderer::SHA_PIXEL_SHADER:	newShader = new CGLPixelShader(); break;
 	default:
 		Debug::Assert(false, "CreateAndCompile() Failed");

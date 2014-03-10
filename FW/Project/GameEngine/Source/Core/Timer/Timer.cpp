@@ -33,3 +33,8 @@ float CTimer::GetFrameTime()
 {
 	return std::chrono::duration<float>(m_CurrTimePoint - m_PrevTimePoint).count();
 }
+
+float CTimer::GetElapsedTime()
+{
+	return std::chrono::duration<float>(m_CurrTimePoint - m_StartTimePoint).count();
+}

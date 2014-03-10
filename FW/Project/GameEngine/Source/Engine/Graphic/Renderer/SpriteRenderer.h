@@ -7,6 +7,8 @@
 #include "Graphic/Shaders/SpriteShader.h"
 #include "Graphic/GeomCreator/GeomCreator.h"
 
+#include "Graphic/Shaders/VFXShader.h"
+
 #include "RenderDevice/RenderDevice.h"
 
 class CSprite;
@@ -25,7 +27,11 @@ public:
 	}
 
 	void Init();
-	void Render(CGLDevice& context, RenderViewID currView);
+
+	virtual void PreRender(CGLDevice& context, RenderViewID currView);
+	virtual void Render(CGLDevice& context, RenderViewID currView);
+
+	void AddInstanceData(VFXVertex& data)	{ m_VFXVertexData.push_back(data); }
 private:
 	CSpriteShader*							m_Effect;
 
@@ -38,6 +44,10 @@ private:
 
 	// Textures
 	//CTexture2DStatic*						m_TexDiffuse;
+
+	CVFXRibbonShader*						m_VFXRibbonEffect;
+	vector<VFXVertex>						m_VFXVertexData;
+	CGLVertexBuffer<VFXVertex>				m_VFXVertexDataVB;
 };
 
 #endif // SpriteRenderer_h__

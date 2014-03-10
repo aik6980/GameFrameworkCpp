@@ -59,6 +59,9 @@ public:
 	void	SetVertexBuffer(const CGLVertexBufferCommon& vb, uint32_t index);
 	void	BindVertexArray();
 
+	void	DrawArrays(Renderer::PrimitiveType mode, uint32_t base_vertex, uint32_t count);
+
+	static GLenum ToGLPrimitiveType(const Renderer::PrimitiveType v);
 	static GLuint ToGLType(const Renderer::DataFormat fmt);
 private:
 	struct VertexBufferSlotData

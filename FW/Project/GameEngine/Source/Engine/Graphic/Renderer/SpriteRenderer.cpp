@@ -16,6 +16,15 @@
 float g_offset = 
 	-0.25;
 
+void CSpriteRenderer::PreRender(CGLDevice& context, RenderViewID currView)
+{
+	m_VFXVertexData.clear();
+
+	CBaseRenderer::PreRender(context, currView);
+
+	m_VFXVertexDataVB.SetData(m_VFXVertexData);
+}
+
 void CSpriteRenderer::Render( CGLDevice& context, RenderViewID currView )
 {
 	switch(currView)
@@ -43,6 +52,12 @@ void CSpriteRenderer::Render( CGLDevice& context, RenderViewID currView )
 			//m_IB.Draw(context);
 			m_InstanceVB.SetBuffer();
 			m_IB.DrawInstancing(m_InstanceData.size());
+
+			m_VFXRibbonEffect->SetCurrTech(CVFXRibbonShader::MAIN);
+			m_VFXRibbonEffect->Apply();
+			
+			m_VFXVertexDataVB.SetBuffer();
+			context.DrawArrays(Renderer::PRIM_LINE_STRIP, 0, m_VFXVertexData.size());
 		}
 		break;
 	}
@@ -68,10 +83,10 @@ void CSpriteRenderer::Init()
 	{
 		CSpriteShader::INSTANCE_DATA inst_data[] = 
 		{
-			{ glm::vec4(-0.5, 0.5, 0, 0.25), glm::vec4(1, 0, 0, 1) },
-			{ glm::vec4(-0.5, -0.5, 0, 0.25), glm::vec4(1, 1, 0, 1) },
-			{ glm::vec4(0.5, 0.5, 0, 0.25), glm::vec4(0, 1, 0, 1) },
-			{ glm::vec4(0.5, -0.5, 0, 0.25), glm::vec4(0, 1, 1, 1) }
+			{ glm::vec4(-0.5, 0.5, 0, 0.1), glm::vec4(1, 0, 0, 1) },
+			{ glm::vec4(-0.5, -0.5, 0, 0.1), glm::vec4(1, 1, 0, 1) },
+			{ glm::vec4(0.5, 0.5, 0, 0.1), glm::vec4(0, 1, 0, 1) },
+			{ glm::vec4(0.5, -0.5, 0, 0.1), glm::vec4(0, 1, 1, 1) }
 		};
 
 		copy(inst_data, inst_data + 4, back_inserter(m_InstanceData));
@@ -93,6 +108,13 @@ void CSpriteRenderer::Init()
 
 	//m_TexDiffuse = new CTexture2DStatic();
 	//m_TexDiffuse->SetData( Global::Renderer(), noiseTexture);
+
+	// Ribbon VFX
+	m_VFXRibbonEffect = new CVFXRibbonShader();
+	m_VFXRibbonEffect->Load();
+
+	m_VFXVertexDataVB.InputSlot(0);
+	m_VFXVertexDataVB.BufferUsage(DYNAMIC_DRAW);
 }
 
 // eof /////////////////////////////////////////////

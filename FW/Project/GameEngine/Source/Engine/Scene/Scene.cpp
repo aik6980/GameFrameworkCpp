@@ -21,13 +21,15 @@
 void CScene::Initialize()
 {
 	// create all renderer
-	m_SpriteRenderer = new CSpriteRenderer();
-	m_RigidRenderer	 = new CRigidRenderer();
+	CSpriteRenderer* sprite_renderer = new CSpriteRenderer();
+	m_RendererList.insert(make_pair(SPRITE_RENDERER, sprite_renderer));
+	CRigidRenderer* rigid_renderer	 = new CRigidRenderer();
+	m_RendererList.insert(make_pair(RIGID_RENDERER, rigid_renderer));
 
 	// create all possible views
 	CBaseRenderView* rw = new CMainView();
-	rw->AddRenderer(*m_SpriteRenderer);
-	rw->AddRenderer(*m_RigidRenderer);
+	rw->AddRenderer(*sprite_renderer);
+	rw->AddRenderer(*rigid_renderer);
 	m_RenderViews.push_back(rw);
 }
 
@@ -35,6 +37,14 @@ void CScene::Render()
 {
 	CGLDevice& context = Global::Renderer();
 
+	// PreRender
+	for_each(m_RenderViews.begin(), m_RenderViews.end(),
+		[&context](CBaseRenderView* obj)
+		{
+			obj->PreRender(context);
+		});
+
+	// Render a frame
 	for_each(m_RenderViews.begin(), m_RenderViews.end(),
 		[&context](CBaseRenderView* obj)
 		{
@@ -43,6 +53,13 @@ void CScene::Render()
 
 	// end of the frame
 	Global::Renderer().SwapBuffers();
+
+	// PostRender
+	for_each(m_RenderViews.begin(), m_RenderViews.end(),
+		[&context](CBaseRenderView* obj)
+		{
+			obj->PreRender(context);
+		});
 }
 
 bool CScene::AddCameraToView( RenderViewID id, CBaseCamera& camera )

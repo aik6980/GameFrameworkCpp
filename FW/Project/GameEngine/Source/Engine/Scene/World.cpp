@@ -24,8 +24,10 @@ void CWorld::Initialize()
 		player->SetCamera(newObj);
 		Global::Scene().AddCameraToView(MAINGAME_VIEW, *newObj);
 	}
-
 	player->m_Position = glm::vec3(0, 0, 10);
+
+	auto ribbonTrailObj = CRibbonTrail::CreateObject();
+	m_GameObjects.push_back(ribbonTrailObj);
 }
 
 void CWorld::Update()

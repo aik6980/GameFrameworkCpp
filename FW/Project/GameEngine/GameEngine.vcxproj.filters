@@ -219,6 +219,12 @@
     <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Shaders\VFXShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Renderer\BaseRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Build\stdafx.h">
@@ -480,6 +486,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Graphic\Shaders\VFXShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,6 +14,9 @@ public:
 	enum PrimitiveType
 	{
 		PRIM_UNDEFINED,
+		PRIM_POINT,
+		PRIM_LINE,
+		PRIM_LINE_STRIP,
 		PRIM_TRIANGLE,
 		PRIM_FACE,
 	};

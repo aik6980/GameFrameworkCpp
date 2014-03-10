@@ -169,6 +169,20 @@ void CGLDevice::BindVertexArray()
 	}
 }
 
+GLenum CGLDevice::ToGLPrimitiveType(const Renderer::PrimitiveType v)
+{
+	switch (v)
+	{
+	case Renderer::PRIM_POINT:		return GL_POINT;
+	case Renderer::PRIM_LINE:		return GL_LINES;
+	case Renderer::PRIM_LINE_STRIP:	return GL_LINE_STRIP;
+	case Renderer::PRIM_TRIANGLE:	return GL_TRIANGLES;
+	default:
+		Debug::Assert(false, "Unsupported Type");
+		return 0;
+	}
+}
+
 GLuint CGLDevice::ToGLType(const Renderer::DataFormat fmt)
 {
 	switch(fmt)
@@ -228,3 +242,14 @@ void CGLDevice::SetDefaultStates()
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 }
+
+void CGLDevice::DrawArrays(Renderer::PrimitiveType mode, uint32_t base_vertex, uint32_t count)
+{
+	if (!count)
+		return;
+
+	BindVertexArray();
+	glDrawArrays(ToGLPrimitiveType(mode), base_vertex, count);
+}
+
+

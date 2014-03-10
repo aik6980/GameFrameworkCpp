@@ -42,6 +42,9 @@ void CResourceManager::LoadAll()
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"SpriteShader.ps.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"RigidShader.vs.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"RigidShader.ps.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.vs.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.gs.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.ps.glsl");
 }
 
 fs::path CResourceManager::MakeFullPath( const fs::path& val )
