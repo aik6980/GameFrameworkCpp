@@ -173,10 +173,12 @@ GLenum CGLDevice::ToGLPrimitiveType(const Renderer::PrimitiveType v)
 {
 	switch (v)
 	{
-	case Renderer::PRIM_POINT:		return GL_POINT;
-	case Renderer::PRIM_LINE:		return GL_LINES;
-	case Renderer::PRIM_LINE_STRIP:	return GL_LINE_STRIP;
-	case Renderer::PRIM_TRIANGLE:	return GL_TRIANGLES;
+	case Renderer::PRIM_POINT:							return GL_POINT;
+	case Renderer::PRIM_LINE:							return GL_LINES;
+	case Renderer::PRIM_LINE_ADJACENCY:					return GL_LINES_ADJACENCY;
+	case Renderer::PRIM_LINE_STRIP:						return GL_LINE_STRIP;
+	case Renderer::PRIM_LINE_STRIP_ADJACENCY:			return GL_LINE_STRIP_ADJACENCY;
+	case Renderer::PRIM_TRIANGLE:						return GL_TRIANGLES;
 	default:
 		Debug::Assert(false, "Unsupported Type");
 		return 0;

@@ -107,7 +107,7 @@ void CRibbonTrail::PreRender(CGLDevice& context, RenderViewID currView, Renderer
 	{
 		VFXVertex v;
 		v.Position = glm::vec4(m_ParticleList[i].Position, 1.0f);
-		v.Color = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
+		v.Color = glm::vec4(0.75f, 0.5f, 0.5f, 1.0f);
 
 		renderer->AddInstanceData(v);
 	}

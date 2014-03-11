@@ -57,7 +57,7 @@ void CSpriteRenderer::Render( CGLDevice& context, RenderViewID currView )
 			m_VFXRibbonEffect->Apply();
 			
 			m_VFXVertexDataVB.SetBuffer();
-			context.DrawArrays(Renderer::PRIM_LINE_STRIP, 0, m_VFXVertexData.size());
+			context.DrawArrays(Renderer::PRIM_LINE_STRIP_ADJACENCY, 0, m_VFXVertexData.size());
 		}
 		break;
 	}

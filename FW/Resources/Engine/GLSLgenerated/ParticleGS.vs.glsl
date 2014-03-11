@@ -8,7 +8,6 @@ layout (location = 1) in vec4 COLOR;
 
 out block
 {
-	vec4 Texcoord0;
 	vec4 Color0;
 }OUT;
 

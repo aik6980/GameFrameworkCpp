@@ -15,12 +15,14 @@ void CVFXRibbonShader::Load()
 {
 	{
 		CResourceObject* vs_src = Global::ResourceManager().Get(GPUPROGRAM, "ParticleGS.vs");
+		CResourceObject* gs_src = Global::ResourceManager().Get(GPUPROGRAM, "ParticleGS.gs");
 		CResourceObject* ps_src = Global::ResourceManager().Get(GPUPROGRAM, "ParticleGS.ps");
-		if (vs_src && ps_src)
+		if (vs_src && gs_src && ps_src)
 		{
 			CGLRenderTechnique* t = new CGLRenderTechnique();
 			t->SetName("Main");
 			t->Load(Renderer::SHA_VERTEX_SHADER, vs_src->m_Path);
+			t->Load(Renderer::SHA_GEOM_SHADER, gs_src->m_Path);
 			t->Load(Renderer::SHA_PIXEL_SHADER, ps_src->m_Path);
 
 			// manually create an input desc
