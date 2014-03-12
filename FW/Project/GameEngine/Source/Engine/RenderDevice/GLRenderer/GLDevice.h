@@ -32,7 +32,6 @@ public:
 	struct tInitStruct
 	{
 		HWND				hwnd;
-		HDC					hdc;
 		float				refreshRate;
 		bool				bWaitForVSync;
 		bool				bNeedVisualOutput;
@@ -40,7 +39,6 @@ public:
 		tInitStruct()
 		{
 			hwnd = nullptr;
-			hdc  = nullptr;
 			refreshRate = 60.0f;
 			bWaitForVSync = true;
 			bNeedVisualOutput = true;
@@ -54,6 +52,8 @@ public:
 
 	void	SwapBuffers();
 	void	Clear(glm::vec4& color, float depth);
+
+	glm::vec2 BackBufferSize();
 
 	void	SetVertexInputLayout(const CGLVertexInputLayout& inputLayout);
 	void	SetVertexBuffer(const CGLVertexBufferCommon& vb, uint32_t index);
@@ -91,6 +91,7 @@ private:
 
 	HGLRC	m_hRC;
 	HDC		m_hDC;
+	HWND	m_hWnd;
 
 	VertexInputLayoutData			m_VertexInputLayout;								
 	array<VertexBufferSlotData, 8>	m_VertexInputStreams;

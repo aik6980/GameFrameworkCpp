@@ -37,7 +37,6 @@ void Global::Initialize(const SInit& initData )
 	{
 		CGLDevice::tInitStruct initDataRenderer;
 		initDataRenderer.hwnd = initData.m_WndHandle;
-		initDataRenderer.hdc  = initData.m_DCHandle;
 		initDataRenderer.bWaitForVSync = false;
 		m_GLRenderer->Initialize(initDataRenderer);
 	}

@@ -119,6 +119,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Database\VFXSystem.cpp" />
     <ClCompile Include="Source\Engine\Global.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -331,9 +332,12 @@
     <ClInclude Include="Source\Engine\Application\BaseApplicationMacros.h" />
     <ClInclude Include="Source\Engine\Application\GameApplication.h" />
     <ClInclude Include="Source\Engine\Application\WinGameApplication.h" />
+    <ClInclude Include="Source\Engine\Database\Database.h" />
+    <ClInclude Include="Source\Engine\Database\DatabaseCpp.h" />
     <ClInclude Include="Source\Engine\Database\FreeCameraController.h" />
     <ClInclude Include="Source\Engine\Database\GameObject.h" />
     <ClInclude Include="Source\Engine\Database\Player.h" />
+    <ClInclude Include="Source\Engine\Database\VFXSystem.h" />
     <ClInclude Include="Source\Engine\Global.h" />
     <ClInclude Include="Source\Engine\Graphic\Renderer\RigidRenderer.h" />
     <ClInclude Include="Source\Engine\Graphic\Shaders\BaseShader.h" />

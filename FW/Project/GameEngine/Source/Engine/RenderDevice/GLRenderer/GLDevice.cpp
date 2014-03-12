@@ -15,7 +15,8 @@
 
 CGLDevice::CGLDevice()
 	: m_hRC(0),
-	m_hDC(0)
+	m_hDC(0),
+	m_hWnd(0)
 {
 
 }
@@ -31,7 +32,8 @@ void CGLDevice::Initialize( const tInitStruct& initData )
 bool CGLDevice::Create30Context( const tInitStruct& initData )
 {
 	// store some variables
-	m_hDC = initData.hdc;
+	m_hWnd = initData.hwnd;
+	m_hDC = GetDC(m_hWnd);
 
 	// choose PixelFormat
 	PIXELFORMATDESCRIPTOR pfd; // Create a new PIXELFORMATDESCRIPTOR (PFD)
@@ -88,14 +90,9 @@ bool CGLDevice::Create30Context( const tInitStruct& initData )
 
 	Debug::Print((boost::wformat(TEXT("Using OpenGL: %1%.%2%")) % glVersion[0] % glVersion[1])); // Output which version of OpenGL we are using
 
-	HWND hwnd = initData.hwnd;
 	// get window info
-	RECT rc;
-	GetClientRect(hwnd,&rc);
-
-	int vpWidth = rc.right - rc.left;
-	int vpHeight= rc.bottom - rc.top;
-	glViewport(0,0,vpWidth, vpHeight);
+	glm::vec2 vp_size = BackBufferSize();
+	glViewport(0,0,(int32_t)vp_size.x, (int32_t)vp_size.y);
 
 	// setup v-sync
 	// http://www.3dbuzz.com/forum/threads/188320-Enable-or-Disable-VSync-in-OpenGL
@@ -252,6 +249,17 @@ void CGLDevice::DrawArrays(Renderer::PrimitiveType mode, uint32_t base_vertex, u
 
 	BindVertexArray();
 	glDrawArrays(ToGLPrimitiveType(mode), base_vertex, count);
+}
+
+glm::vec2 CGLDevice::BackBufferSize()
+{
+	RECT rc;
+	GetClientRect(m_hWnd, &rc);
+
+	int vpWidth = rc.right - rc.left;
+	int vpHeight = rc.bottom - rc.top;
+
+	return glm::vec2(vpWidth, vpHeight);
 }
 
 

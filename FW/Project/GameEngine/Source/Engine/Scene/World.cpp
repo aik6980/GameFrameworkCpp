@@ -12,7 +12,7 @@
 #include "Global.h"
 #include "World.h"
 #include "Scene.h"
-#include "Database/Player.h"
+#include "Database/DatabaseCpp.h"
 #include "Graphic/Camera/Camera.h"
 
 void CWorld::Initialize()
