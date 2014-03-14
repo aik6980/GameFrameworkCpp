@@ -75,27 +75,54 @@ public:
 	virtual void	Apply()			{};
 };
 
-
-class CGLRenderTechnique
+class CGLTechniqueCommon
 {
 public:
-	CGLRenderTechnique();
+	CGLTechniqueCommon()
+		: m_TechniqueHandle(0)
+	{ }
 
-	const string&			GetName	() const { return m_Name; }
+	virtual bool			Load(Renderer::ShaderType t, const fs::path & fn) = 0;
+	virtual void			Apply() = 0;
+
+	const string&			GetName() const { return m_Name; }
 	void					SetName(const string& val) { m_Name = val; }
+protected:
+	CGLCommonGpuProgram*	CreateAndCompile(Renderer::ShaderType t, const fs::path & fn);
+	bool					LinkShaders(CGLCommonGpuProgram** shaders, uint32_t num_elems);
 
-	bool					Load(Renderer::ShaderType t, const fs::path & fn);
-	void					Apply();
+	string					m_Name;
+	GLuint					m_TechniqueHandle;
+};
+
+class CGLRenderTechnique : public CGLTechniqueCommon
+{
+public:
+	CGLRenderTechnique()
+	{
+		m_Shaders.assign(nullptr);
+	}
+
+	virtual bool			Load(Renderer::ShaderType t, const fs::path & fn);
+	virtual void			Apply();
 
 	template<class T> 
 	T*						GetShader(Renderer::ShaderType type) { return static_cast<T*>(m_Shaders[type]); }	
 private:
-	CGLCommonGpuProgram*	CreateAndCompile( Renderer::ShaderType t, const fs::path & fn);
-	bool					LinkShaders();
+	array<CGLCommonGpuProgram*, 5>	m_Shaders;
+};
 
-	string							m_Name;
-	GLuint							m_TechniqueHandle;
-	array<CGLCommonGpuProgram*, 6>	m_Shaders;
+class CGLComputeTechnique : public CGLTechniqueCommon
+{
+	CGLComputeTechnique()
+	{
+		m_Shaders.assign(nullptr);
+	}
+
+	virtual bool			Load(Renderer::ShaderType t, const fs::path & fn);
+	virtual void			Apply();
+private:
+	array<CGLCommonGpuProgram*, 1>	m_Shaders;
 };
 
 

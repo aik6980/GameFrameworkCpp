@@ -71,29 +71,10 @@ bool CGLCommonGpuProgram::Compile( const fs::path & fn )
 }
 
 
-CGLRenderTechnique::CGLRenderTechnique()
-	: m_TechniqueHandle(0)
-{
-	m_Shaders.assign(nullptr);
-}
-
-bool CGLRenderTechnique::Load( Renderer::ShaderType t, const fs::path & fn )
-{
-	m_Shaders[t] = CreateAndCompile(t, fn);
-
-	// PixelShader will be loaded at the last one, so perform linking step here 
-	if(t == Renderer::SHA_PIXEL_SHADER)
-	{
-		return LinkShaders();
-	}
-
-	return true;
-}
-
-CGLCommonGpuProgram* CGLRenderTechnique::CreateAndCompile( Renderer::ShaderType t, const fs::path & fn)
+CGLCommonGpuProgram* CGLTechniqueCommon::CreateAndCompile(Renderer::ShaderType t, const fs::path & fn)
 {
 	CGLCommonGpuProgram* newShader = nullptr;
-	switch(t)
+	switch (t)
 	{
 	case Renderer::SHA_VERTEX_SHADER:	newShader = new CGLVertexShader(); break;
 	case Renderer::SHA_GEOM_SHADER:		newShader = new CGLGeometryShader(); break;
@@ -107,14 +88,14 @@ CGLCommonGpuProgram* CGLRenderTechnique::CreateAndCompile( Renderer::ShaderType 
 	return newShader;
 }
 
-bool CGLRenderTechnique::LinkShaders()
+bool CGLTechniqueCommon::LinkShaders(CGLCommonGpuProgram** shaders, uint32_t num_elems)
 {
 	m_TechniqueHandle = glCreateProgram();
-	for(uint32_t i=0; i<m_Shaders.size(); ++i)
+	for (uint32_t i = 0; i<num_elems; ++i)
 	{
-		if(m_Shaders[i] && m_Shaders[i]->ShaderProgramHandle() != 0)
+		if (shaders[i] && shaders[i]->ShaderProgramHandle() != 0)
 		{
-			glAttachShader(m_TechniqueHandle, m_Shaders[i]->ShaderProgramHandle());
+			glAttachShader(m_TechniqueHandle, shaders[i]->ShaderProgramHandle());
 		}
 	}
 
@@ -123,7 +104,7 @@ bool CGLRenderTechnique::LinkShaders()
 	// check if there is any error
 	GLint result;
 	glGetProgramiv(m_TechniqueHandle, GL_LINK_STATUS, &result);
-	if(result == GL_FALSE)
+	if (result == GL_FALSE)
 	{
 		glGetProgramiv(m_TechniqueHandle, GL_INFO_LOG_LENGTH, &result);
 		char* errorStr = new char[result];
@@ -133,6 +114,19 @@ bool CGLRenderTechnique::LinkShaders()
 
 		Safe_Delete(errorStr);
 		return false;
+	}
+
+	return true;
+}
+
+bool CGLRenderTechnique::Load( Renderer::ShaderType t, const fs::path & fn )
+{
+	m_Shaders[t] = CreateAndCompile(t, fn);
+
+	// PixelShader will be loaded at the last one, so perform linking step here 
+	if(t == Renderer::SHA_PIXEL_SHADER)
+	{
+		return LinkShaders(&m_Shaders[0], m_Shaders.size());
 	}
 
 	return true;
