@@ -345,6 +345,7 @@
     <ClInclude Include="Source\Engine\Graphic\GeomCreator\GeomCreator.h" />
     <ClInclude Include="Source\Engine\Graphic\Graphic.h" />
     <ClInclude Include="Source\Engine\Graphic\Renderer\BaseRenderer.h" />
+    <ClInclude Include="Source\Engine\Graphic\Shaders\ComputeShader.h" />
     <ClInclude Include="Source\Engine\Graphic\Shaders\RigidShader.h" />
     <ClInclude Include="Source\Engine\Graphic\Shaders\SpriteShader.h" />
     <ClInclude Include="Source\Engine\Graphic\Renderer\SpriteRenderer.h" />
