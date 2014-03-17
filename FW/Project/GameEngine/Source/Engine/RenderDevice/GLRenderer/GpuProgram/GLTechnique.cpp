@@ -146,6 +146,27 @@ void CGLRenderTechnique::Apply()
 	}
 }
 
+bool CGLComputeTechnique::Load(const fs::path & fn)
+{
+	m_Shaders[0] = CreateAndCompile(Renderer::SHA_COMPUTE_SHADER, fn);
+	LinkShaders(&m_Shaders[0], m_Shaders.size());
+
+	return true;
+}
+
+void CGLComputeTechnique::Apply()
+{
+	CGLComputeShader* cs = static_cast<CGLComputeShader*>(m_Shaders[0]);
+	if (cs)
+	{
+		glUseProgram(m_TechniqueHandle);
+	}
+	else
+	{
+		glUseProgram(0);
+	}
+}
+
 // eof /////////////////////////////////////////////
 
 

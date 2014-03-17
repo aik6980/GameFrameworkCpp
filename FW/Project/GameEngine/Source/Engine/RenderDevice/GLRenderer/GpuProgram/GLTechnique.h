@@ -82,7 +82,6 @@ public:
 		: m_TechniqueHandle(0)
 	{ }
 
-	virtual bool			Load(Renderer::ShaderType t, const fs::path & fn) = 0;
 	virtual void			Apply() = 0;
 
 	const string&			GetName() const { return m_Name; }
@@ -103,7 +102,7 @@ public:
 		m_Shaders.assign(nullptr);
 	}
 
-	virtual bool			Load(Renderer::ShaderType t, const fs::path & fn);
+	bool					Load(Renderer::ShaderType t, const fs::path & fn);
 	virtual void			Apply();
 
 	template<class T> 
@@ -119,7 +118,7 @@ class CGLComputeTechnique : public CGLTechniqueCommon
 		m_Shaders.assign(nullptr);
 	}
 
-	virtual bool			Load(Renderer::ShaderType t, const fs::path & fn);
+	bool					Load(const fs::path & fn);
 	virtual void			Apply();
 private:
 	array<CGLCommonGpuProgram*, 1>	m_Shaders;

@@ -251,6 +251,11 @@ void CGLDevice::DrawArrays(Renderer::PrimitiveType mode, uint32_t base_vertex, u
 	glDrawArrays(ToGLPrimitiveType(mode), base_vertex, count);
 }
 
+void CGLDevice::DispatchCompute(const glm::uvec3& numGroups)
+{
+	glDispatchCompute(numGroups.x, numGroups.y, numGroups.z);
+}
+
 glm::vec2 CGLDevice::BackBufferSize()
 {
 	RECT rc;
@@ -261,5 +266,6 @@ glm::vec2 CGLDevice::BackBufferSize()
 
 	return glm::vec2(vpWidth, vpHeight);
 }
+
 
 

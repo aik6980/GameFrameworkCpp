@@ -60,6 +60,7 @@ public:
 	void	BindVertexArray();
 
 	void	DrawArrays(Renderer::PrimitiveType mode, uint32_t base_vertex, uint32_t count);
+	void	DispatchCompute(const glm::uvec3& numGroups);
 
 	static GLenum ToGLPrimitiveType(const Renderer::PrimitiveType v);
 	static GLuint ToGLType(const Renderer::DataFormat fmt);
