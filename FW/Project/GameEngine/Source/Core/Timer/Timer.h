@@ -31,8 +31,8 @@ public:
 
 	void  Update();
 
-	float GetFrameTime();
-	float GetElapsedTime();
+	float GetFrameTime() const;
+	float GetElapsedTime() const;
 private:
 	std::chrono::time_point<std::chrono::system_clock>	m_StartTimePoint;
 	std::chrono::time_point<std::chrono::system_clock>	m_CurrTimePoint;

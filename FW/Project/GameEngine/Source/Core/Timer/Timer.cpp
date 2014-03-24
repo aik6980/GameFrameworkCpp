@@ -29,12 +29,12 @@ void CTimer::Update()
 	//Debug::Print((boost::wformat(TEXT("This Frame Time: %1%")) % GetFrameTime()));
 }
 
-float CTimer::GetFrameTime()
+float CTimer::GetFrameTime() const
 {
 	return std::chrono::duration<float>(m_CurrTimePoint - m_PrevTimePoint).count();
 }
 
-float CTimer::GetElapsedTime()
+float CTimer::GetElapsedTime() const
 {
 	return std::chrono::duration<float>(m_CurrTimePoint - m_StartTimePoint).count();
 }

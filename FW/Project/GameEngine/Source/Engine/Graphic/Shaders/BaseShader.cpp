@@ -32,4 +32,11 @@ void CBaseShader::SetViewCommonData( const CBaseCamera& camera )
 	m_CbViewCommon.SetData(cb0);
 }
 
+void CBaseShader::SetSceneCommon(const CTimer& timer)
+{
+	cbSceneCommon cb;
+
+	cb.GameTimerData = glm::vec4(timer.GetElapsedTime(), timer.GetFrameTime(), 0, 0);
+}
+
 // eof /////////////////////////////////////////////

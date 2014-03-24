@@ -28,7 +28,7 @@ struct cbViewCommon
 
 struct cbSceneCommon
 {
-	glm::vec4	Gametime; // x: curr_gametime, y prev_gametime
+	glm::vec4	GameTimerData; // x: CurrentTime, y: DeltaTime
 };
 
 struct cbObjectCommon
@@ -49,6 +49,7 @@ public:
 	virtual	const string & GetName()	{ return m_Name; }
 
 	static void SetViewCommonData(const CBaseCamera& camera);
+	static void SetSceneCommon(const CTimer& timer);
 protected:
 	string		m_Name;
 };

@@ -8,7 +8,15 @@ layout (binding = 1) uniform CB01
 	vec4	GameTimerData;
 }CbSceneCommon;
 
-float 
+float CurrentTime()
+{
+	return CbSceneCommon.GameTimerData.x;
+}
+
+float DeltaTime()
+{
+	return CbSceneCommon.GameTimerData.y;
+}
 
 // buffers
 struct Particle
@@ -49,6 +57,8 @@ layout (std430, binding = 2) buffer SSBO02
 struct EmitterInstance
 {
 	vec3	Position;
+	float	EmissionRate;
+	float	Accumulator;
 };
 
 layout (std430, binding = 3) buffer SSBO03
@@ -61,5 +71,9 @@ layout (std430, binding = 3) buffer SSBO03
 layout (local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
 void main()
 {
-	
+	EmitterInstance emt = g_EmitterInstanceList.n[gl_GlobalInvocationID.x];
+	if( emt.EmissionRate != 0.0 )
+	{
+		
+	}
 }
