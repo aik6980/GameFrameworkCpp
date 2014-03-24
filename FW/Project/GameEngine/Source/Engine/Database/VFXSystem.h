@@ -38,4 +38,14 @@ private:
 	float		m_AccumDistance;
 };
 
+class CSimpleParticleSystem : public CBaseGameObject
+{
+public:
+	static shared_ptr<CSimpleParticleSystem> CreateObject();
+
+	virtual void Update();
+private:
+
+};
+
 #endif // VFXSystem_h__

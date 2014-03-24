@@ -79,6 +79,7 @@ CGLCommonGpuProgram* CGLTechniqueCommon::CreateAndCompile(Renderer::ShaderType t
 	case Renderer::SHA_VERTEX_SHADER:	newShader = new CGLVertexShader(); break;
 	case Renderer::SHA_GEOM_SHADER:		newShader = new CGLGeometryShader(); break;
 	case Renderer::SHA_PIXEL_SHADER:	newShader = new CGLPixelShader(); break;
+	case Renderer::SHA_COMPUTE_SHADER:	newShader = new CGLComputeShader(); break;
 	default:
 		Debug::Assert(false, "CreateAndCompile() Failed");
 		return nullptr;

@@ -13,6 +13,8 @@
 CResourceManager*	Global::m_ResourceManager	= new CResourceManager();
 CGLDevice*			Global::m_GLRenderer		= new CGLDevice();
 CInputManager*		Global::m_InputManager		= nullptr;
+
+CParticleManager*	Global::m_ParticleManager	= new CParticleManager();
 CRigidBodyManager*	Global::m_RigidBodyManager  = new CRigidBodyManager();
 
 CScene*				Global::m_Scene				= new CScene();
@@ -40,6 +42,8 @@ void Global::Initialize(const SInit& initData )
 		initDataRenderer.bWaitForVSync = false;
 		m_GLRenderer->Initialize(initDataRenderer);
 	}
+
+	m_ParticleManager->Initialize();
 
 	// High level system (Game Logic, etc.)
 	m_Scene->Initialize();

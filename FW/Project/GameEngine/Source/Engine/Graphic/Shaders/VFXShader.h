@@ -11,7 +11,7 @@ struct VFXVertex
 	glm::vec4	Color;
 };
 
-class CVFXRibbonShader : public CBaseShader
+class CVFXRibbonShader : public CBaseRenderShader
 {
 public:
 	enum eTechnique

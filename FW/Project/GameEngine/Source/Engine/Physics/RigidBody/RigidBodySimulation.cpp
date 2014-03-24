@@ -35,7 +35,7 @@ uint32_t CRigidBodyManager::CalculateNumParticles( float size )
 	return (uint32_t)ceil(size/m_VoxelSize);
 }
 
-void CRigidBodyManager::CreateParticles( vector<CParticle>& particles, float size )
+void CRigidBodyManager::CreateParticles(vector<CRigidParticleProxy>& particles, float size)
 {
 	uint32_t numParticlesPerSize = CalculateNumParticles(size);
 	// allocate particles

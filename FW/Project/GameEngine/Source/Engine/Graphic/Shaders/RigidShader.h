@@ -21,7 +21,7 @@
 #include "BaseShader.h"
 
 // type declarations (enum struct class) /////////
-class CRigidShader : public CBaseShader
+class CRigidShader : public CBaseRenderShader
 {
 public:
 	enum eTechnique

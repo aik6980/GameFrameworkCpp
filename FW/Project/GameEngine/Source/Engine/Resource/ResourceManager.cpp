@@ -45,6 +45,9 @@ void CResourceManager::LoadAll()
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.vs.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.gs.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.ps.glsl");
+	// Compute
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleEmit.cs.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleSimulation.cs.glsl");
 }
 
 fs::path CResourceManager::MakeFullPath( const fs::path& val )

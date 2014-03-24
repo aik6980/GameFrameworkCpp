@@ -9,21 +9,21 @@ layout (binding = 0) uniform CB00
 }CbSceneCommon;
 
 // buffers
-struct EmitterConst
+struct EmitterInstance
 {
-	
+	vec3	Position;
 };
 
-struct ParticleSimData
+struct Particle
 {
-	vec3	pos;
-	vec3	vel;
-	vec4	lifetime;
+	vec4	Position_Id;
+	vec3	Velocity;
+	vec2	Begintime_Lifetime;
 };
 
-layout (std430, binding = 1) buffer
+layout (std430, binding = 0) buffer SSBO00 
 {
-	ParticleSimData p[];
+	Particle p[];
 } g_input_data;
 
 // Input layout qualifier declaring a 16x 16(x 1)local

@@ -39,7 +39,7 @@ private:
 	// default as a cube
 	float		m_Size;
 
-	vector<CParticle>	m_Particles;
+	vector<CRigidParticleProxy>	m_Particles;
 };
 
 #ifdef SHOW_HEADERS

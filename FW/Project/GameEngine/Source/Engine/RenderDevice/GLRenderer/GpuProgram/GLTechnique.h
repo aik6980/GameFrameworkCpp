@@ -113,6 +113,7 @@ private:
 
 class CGLComputeTechnique : public CGLTechniqueCommon
 {
+public:
 	CGLComputeTechnique()
 	{
 		m_Shaders.assign(nullptr);

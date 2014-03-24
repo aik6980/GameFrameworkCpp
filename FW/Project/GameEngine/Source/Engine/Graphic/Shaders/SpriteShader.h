@@ -7,7 +7,7 @@
 
 class CSamplerState_Point;
 
-class CSpriteShader : public CBaseShader
+class CSpriteShader : public CBaseRenderShader
 {
 public:
 	struct CB02

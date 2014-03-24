@@ -20,7 +20,7 @@
 #include "Core/Core.h"
 #include "RigidBody.h"
 
-class CParticle;
+class CRigidParticleProxy;
 class CRigidBodyContactGenerator;
 // type declarations (enum struct class) /////////
 class CRigidBodyManager
@@ -32,7 +32,7 @@ public:
 
 
 	void		CreateSimulationGrid();
-	void		CreateParticles(vector<CParticle>& particles, float size);
+	void		CreateParticles(vector<CRigidParticleProxy>& particles, float size);
 private:
 	uint32_t	TotalNumVoxels()	{ return m_GridSize * m_GridSize * m_GridSize; }
 	uint32_t	CalculateNumParticles(float size);

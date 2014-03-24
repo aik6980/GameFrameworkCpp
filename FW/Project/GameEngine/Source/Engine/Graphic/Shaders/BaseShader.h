@@ -26,6 +26,11 @@ struct cbViewCommon
 	}
 };
 
+struct cbSceneCommon
+{
+	glm::vec4	Gametime; // x: curr_gametime, y prev_gametime
+};
+
 struct cbObjectCommon
 {
 	glm::fmat4x4 WorldXf;
@@ -39,15 +44,31 @@ public:
 	CBaseShader();
 
 	static CGLConstantBuffer<cbViewCommon>		m_CbViewCommon;
-	//static CGLConstantBuffer<cbObjectCommon>	m_CbObjectCommon;
+	static CGLConstantBuffer<cbObjectCommon>	m_CbSceneCommon;
 
 	virtual	const string & GetName()	{ return m_Name; }
 
 	static void SetViewCommonData(const CBaseCamera& camera);
 protected:
 	string		m_Name;
+};
 
+class CBaseRenderShader : public CBaseShader
+{
+public:
+	CBaseRenderShader()
+	{}
+protected:
 	std::unordered_map<int32_t, CGLRenderTechnique*>	m_RenderTechniques;
+};
+
+class CBaseComputeShader : public CBaseShader
+{
+public:
+	CBaseComputeShader()
+	{}
+protected:
+	std::unordered_map<int32_t, CGLComputeTechnique*>	m_ComputeTechniques;
 };
 
 #endif // BaseShader_h__

@@ -1,9 +1,9 @@
-#ifndef Particle_h__
-#define Particle_h__
+#ifndef RigidParticle_h__
+#define RigidParticle_h__
 
 #include "Core/Core.h"
 
-class CParticle
+class CRigidParticleProxy
 {
 public:
 	// Basic
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif // Particle_h__
+#endif // RigidParticle_h__

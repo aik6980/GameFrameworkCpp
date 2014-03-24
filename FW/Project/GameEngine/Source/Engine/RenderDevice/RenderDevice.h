@@ -16,5 +16,6 @@
 class CD3d11Device;
 
 class CGLRenderTechnique;
+class CGLComputeTechnique;
 
 #endif // RenderDevice_h__

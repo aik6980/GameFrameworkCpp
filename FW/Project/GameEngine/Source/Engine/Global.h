@@ -8,6 +8,8 @@ class CD3d11Device;
 class CGLDevice;
 class CResourceManager;
 class CInputManager;
+
+class CParticleManager;
 class CRigidBodyManager;
 
 class CScene;
@@ -29,17 +31,20 @@ public:
 	static CGLDevice &			Renderer()			{ return *m_GLRenderer; }
 	static CResourceManager &	ResourceManager()	{ return *m_ResourceManager; }
 	static CInputManager &		InputManager()		{ return *m_InputManager; }
+	static CParticleManager &	ParticleManager()	{ return *m_ParticleManager; }
 	static CRigidBodyManager &	RigidBodyManager()	{ return *m_RigidBodyManager; }
 
 	static CScene &				Scene()				{ return *m_Scene; }
 	static CWorld &				World()				{ return *m_World; }
 	static CTimer &				GameTimer()			{ return *m_GameTimer; }
+
 private:
 	// subsystems
 	static CResourceManager*	m_ResourceManager;
 	static CGLDevice*			m_GLRenderer;
 	static CInputManager*		m_InputManager;
 
+	static CParticleManager*	m_ParticleManager;
 	static CRigidBodyManager*	m_RigidBodyManager;
 
 	static CScene*				m_Scene;

@@ -145,6 +145,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Graphic\Shaders\ComputeShader.cpp" />
     <ClCompile Include="Source\Engine\Graphic\Shaders\RigidShader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -176,6 +177,7 @@
     </ClCompile>
     <ClCompile Include="Source\Engine\Physics\Collision\BoundingVolume.cpp" />
     <ClCompile Include="Source\Engine\Physics\Collision\CollisionDetection.cpp" />
+    <ClCompile Include="Source\Engine\Physics\ParticleSystem\ParticleManager.cpp" />
     <ClCompile Include="Source\Engine\Physics\RigidBody\Particle.cpp" />
     <ClCompile Include="Source\Engine\Physics\RigidBody\RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
@@ -339,6 +341,7 @@
     <ClInclude Include="Source\Engine\Database\Player.h" />
     <ClInclude Include="Source\Engine\Database\VFXSystem.h" />
     <ClInclude Include="Source\Engine\Global.h" />
+    <ClInclude Include="Source\Engine\Graphic\GraphicCpp.h" />
     <ClInclude Include="Source\Engine\Graphic\Renderer\RigidRenderer.h" />
     <ClInclude Include="Source\Engine\Graphic\Shaders\BaseShader.h" />
     <ClInclude Include="Source\Engine\Graphic\Camera\Camera.h" />
@@ -355,6 +358,9 @@
     <ClInclude Include="Source\Engine\Input\InputManager.h" />
     <ClInclude Include="Source\Engine\Physics\Collision\BoundingVolume.h" />
     <ClInclude Include="Source\Engine\Physics\Collision\CollisionDetection.h" />
+    <ClInclude Include="Source\Engine\Physics\ParticleSystem\Emitter.h" />
+    <ClInclude Include="Source\Engine\Physics\ParticleSystem\Particle.h" />
+    <ClInclude Include="Source\Engine\Physics\ParticleSystem\ParticleManager.h" />
     <ClInclude Include="Source\Engine\Physics\Physics.h" />
     <ClInclude Include="Source\Engine\Physics\PhysicsCpp.h" />
     <ClInclude Include="Source\Engine\Physics\RigidBody\Particle.h" />
@@ -375,8 +381,10 @@
     <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Surface.h" />
     <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture.h" />
     <ClInclude Include="Source\Engine\RenderDevice\D3d11Renderer\Surface\D3d11Texture2D.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLBuffer.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLConstantBuffer.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLDrawIndirectBuffer.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLShaderStorageBlock.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexBuffer.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLVertexInputLayout.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDefines.h" />
