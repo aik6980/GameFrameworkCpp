@@ -12,7 +12,8 @@ public:
 	void	Initialize();
 	void	Update();
 private:
-	const static uint32_t	MAX_PARTICLES = 1000000;
+	const static uint32_t	MAX_EMITTERS	= 64 * 400;
+	const static uint32_t	MAX_PARTICLES	= 256 * 4000;
 
 	array<CParticle, MAX_PARTICLES>				m_ParticleList;
 	array<ParticleAlive, MAX_PARTICLES>			m_ParticleAliveList;
