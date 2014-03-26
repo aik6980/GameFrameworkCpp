@@ -35,4 +35,17 @@ struct ParticleDead
 	{}
 };
 
+struct CEmitter
+{
+	glm::vec3		Position;
+	glm::float32	EmissionRate;
+	glm::float32	Accumulator;
+
+	CEmitter()
+		: Position(0, 0, 0),
+		EmissionRate(0),
+		Accumulator(0)
+	{}
+};
+
 #endif // Particle_h__

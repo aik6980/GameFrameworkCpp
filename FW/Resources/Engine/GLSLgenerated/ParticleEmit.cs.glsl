@@ -66,6 +66,10 @@ layout (std430, binding = 3) buffer SSBO03
 	EmitterInstance 	n[];
 } g_EmitterInstanceList;
 
+
+// Util function
+
+
 // Input layout qualifier declaring a 16x 16(x 1)local
 // workgroup size
 layout (local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
@@ -74,6 +78,10 @@ void main()
 	EmitterInstance emt = g_EmitterInstanceList.n[gl_GlobalInvocationID.x];
 	if( emt.EmissionRate != 0.0 )
 	{
-		
+		if( emt.Accumulator > 1.0 )
+		{
+			emt.Accumulator = 0;
+			// emit particle
+		}
 	}
 }
