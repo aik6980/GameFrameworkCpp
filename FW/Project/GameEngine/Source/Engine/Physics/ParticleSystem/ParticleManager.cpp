@@ -27,8 +27,11 @@ void CParticleManager::SimulateEmitter(uint32_t id)
 	
 	if (emt.EmissionRate != 0.0f)
 	{
-		if (emt.Accumulator > 1.0f)
+		while (emt.Accumulator > 1.0f)
 		{
+			emt.Accumulator -= 1.0f;
+			uint32_t id = SpawnParticle();
+			// initialize new particle
 
 		}
 	}
@@ -39,12 +42,8 @@ uint32_t CParticleManager::SpawnParticle()
 	if (m_ParticleDeadCounter > 0)
 	{
 		// get new particle from the dead list
-		ParticleDead& dead_p = m_ParticleDeadList[m_ParticleDeadCounter];
+		ParticleDead& alive_p = m_ParticleDeadList[m_ParticleDeadCounter];
 		m_ParticleDeadCounter--;
-		// add to alive list
-		ParticleAlive& alive_p = m_ParticleAliveList[m_ParticleAliveCounter];
-		alive_p.Index = dead_p.Index;
-		m_ParticleAliveCounter++;
 
 		return alive_p.Index;
 	}
