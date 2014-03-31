@@ -5,7 +5,7 @@
 // uniforms
 layout (binding = 0) uniform CB00
 {
-	float	gameTime;
+	float   gameTime;
 }CbSceneCommon;
 
 // buffers

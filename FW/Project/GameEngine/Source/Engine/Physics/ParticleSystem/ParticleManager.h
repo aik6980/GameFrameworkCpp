@@ -8,7 +8,7 @@ class CParticleManager
 {
 public:
 	CParticleManager() 
-	: m_ParticleAliveCounter(0),
+	: m_ParticleRenderCounter(0),
 	m_ParticleDeadCounter(MAX_PARTICLES - 1)
 	{}
 
@@ -25,8 +25,8 @@ private:
 
 	array<CParticle, MAX_PARTICLES>				m_ParticleList;
 
-	uint32_t									m_ParticleAliveCounter;
-	array<ParticleAlive, MAX_PARTICLES>			m_ParticleAliveList;
+	uint32_t									m_ParticleRenderCounter;
+	array<ParticleAlive, MAX_PARTICLES>			m_ParticleRenderList;
 	uint32_t									m_ParticleDeadCounter;
 	array<ParticleDead, MAX_PARTICLES>			m_ParticleDeadList;
 

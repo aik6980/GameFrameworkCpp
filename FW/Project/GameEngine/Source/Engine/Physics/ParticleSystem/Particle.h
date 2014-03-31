@@ -1,6 +1,8 @@
 #ifndef Particle_h__
 #define Particle_h__
 
+const uint32_t INVALID_ID = -1;
+
 struct CParticle
 {
 	glm::vec4		Position_EmitterId;

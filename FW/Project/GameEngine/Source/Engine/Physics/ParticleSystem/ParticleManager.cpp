@@ -30,9 +30,12 @@ void CParticleManager::SimulateEmitter(uint32_t id)
 		while (emt.Accumulator > 1.0f)
 		{
 			emt.Accumulator -= 1.0f;
-			uint32_t id = SpawnParticle();
+			uint32_t p_id = SpawnParticle();
 			// initialize new particle
-
+			if (p_id != INVALID_ID)
+			{
+				CParticle& particle = m_ParticleList[p_id];
+			}
 		}
 	}
 }
@@ -50,6 +53,6 @@ uint32_t CParticleManager::SpawnParticle()
 	else
 	{
 		Debug::Print(boost::wformat(TEXT("m_ParticleDeadCounter == 0, Cannot spawn any new particle")));
-		return -1;
+		return INVALID_ID;
 	}
 }
