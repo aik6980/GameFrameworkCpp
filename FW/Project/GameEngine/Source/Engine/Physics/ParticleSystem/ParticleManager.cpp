@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "ParticleManager.h"
 
+#include "CoreCpp.h"
+#include "Global.h"
 #include "Graphic/GraphicCpp.h"
 
 void CParticleManager::Initialize()
@@ -23,6 +25,7 @@ void CParticleManager::Update()
 
 void CParticleManager::SimulateEmitter(uint32_t id)
 {
+	float curr_time = Global::GameTimer().GetElapsedTime();
 	CEmitter& emt = m_EmitterList[id];
 	
 	if (emt.EmissionRate != 0.0f)
@@ -35,6 +38,8 @@ void CParticleManager::SimulateEmitter(uint32_t id)
 			if (p_id != INVALID_ID)
 			{
 				CParticle& particle = m_ParticleList[p_id];
+				particle.Position_EmitterId = glm::vec4(emt.Position, id);
+				particle.Begintime_Lifetime = glm::vec2(curr_time, 
 			}
 		}
 	}

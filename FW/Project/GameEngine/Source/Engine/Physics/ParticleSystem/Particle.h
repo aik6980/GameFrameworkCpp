@@ -41,11 +41,13 @@ struct CEmitter
 {
 	glm::vec3		Position;
 	glm::float32	EmissionRate;
+	glm::vec2		ParticleLifeTimeRanged;
 	glm::float32	Accumulator;
 
 	CEmitter()
 		: Position(0, 0, 0),
 		EmissionRate(0),
+		ParticleLifeTimeRanged(0.5f, 1.0f),
 		Accumulator(0)
 	{}
 };
