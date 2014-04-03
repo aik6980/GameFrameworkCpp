@@ -39,7 +39,7 @@ void CParticleManager::SimulateEmitter(uint32_t id)
 			{
 				CParticle& particle = m_ParticleList[p_id];
 				particle.Position_EmitterId = glm::vec4(emt.Position, id);
-				particle.Begintime_Lifetime = glm::vec2(curr_time, 
+				particle.Begintime_Lifetime = glm::vec2(curr_time, emt.ParticleLifeTime);
 			}
 		}
 	}
