@@ -8,4 +8,6 @@
 #include "Lib/Glm/glm/glm.hpp"
 #include "Lib/Glm/glm/ext.hpp"
 
+#include "Random/Random.h"
+
 #endif // _Math_h__

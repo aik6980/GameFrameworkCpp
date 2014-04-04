@@ -71,6 +71,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Source\Core\Math\Random\Random.cpp" />
     <ClCompile Include="Source\Core\Math\Tuple4.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">true</ExcludedFromBuild>
@@ -320,6 +321,7 @@
     <ClInclude Include="Source\Core\Math\MathCpp.h" />
     <ClInclude Include="Source\Core\Math\Matrix.h" />
     <ClInclude Include="Source\Core\Math\Noise\Noise.h" />
+    <ClInclude Include="Source\Core\Math\Random\Random.h" />
     <ClInclude Include="Source\Core\Math\Tuple4.h" />
     <ClInclude Include="Source\Core\Math\UnitTest\UnitTest.h" />
     <ClInclude Include="Source\Core\Math\Vector.h" />
