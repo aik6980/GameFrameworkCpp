@@ -237,6 +237,9 @@
     <ClCompile Include="Source\Core\Math\Random\Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Buffer\GLBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Build\stdafx.h">

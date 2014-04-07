@@ -31,18 +31,6 @@ layout (std430, binding = 0) buffer SSBO00
 	Particle 	p[];
 } g_ParticleList;
 
-struct AliveParticle
-{
-	uint	Id;
-	float	DistanceSq;
-};
-
-layout (std430, binding = 1) buffer SSBO01
-{
-	uint			atomic_counter;
-	AliveParticle 	n[];
-} g_AliveParticleList;
-
 struct DeadParticle
 {
 	uint	Id;
@@ -50,7 +38,6 @@ struct DeadParticle
 
 layout (std430, binding = 2) buffer SSBO02
 {
-	uint			atomic_counter;
 	DeadParticle 	n[];
 } g_DeadParticleList;
 

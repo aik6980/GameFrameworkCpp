@@ -65,11 +65,16 @@ bool CGLDevice::Create30Context( const tInitStruct& initData )
 	int32_t major, minor;
 	GetGLVersion(major, minor);
 
+	// *note* highly suggested to use CORE_PROFILE instead of COMPATIBLE_PROFILE
+	uint32_t context_flags = WGL_CONTEXT_DEBUG_BIT_ARB
+		//| WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB // Set our OpenGL context to be forward compatible
+		;
+
 	int attributes[] = {
 		WGL_CONTEXT_MAJOR_VERSION_ARB, major, // Set the MAJOR version of OpenGL to 4
 		WGL_CONTEXT_MINOR_VERSION_ARB, minor, // Set the MINOR version of OpenGL to 2
 		// *note* highly suggested to use CORE_PROFILE instead of COMPATIBLE_PROFILE
-		//WGL_CONTEXT_FLAGS_ARB, WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB, // Set our OpenGL context to be forward compatible
+		WGL_CONTEXT_FLAGS_ARB, context_flags,
 		WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
 		0
 	};
@@ -89,6 +94,16 @@ bool CGLDevice::Create30Context( const tInitStruct& initData )
 	glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]); // Get back the OpenGL MAJOR version we are using
 
 	Debug::Print((boost::wformat(TEXT("Using OpenGL: %1%.%2%")) % glVersion[0] % glVersion[1])); // Output which version of OpenGL we are using
+
+	// setup debug context
+	if (context_flags & WGL_CONTEXT_DEBUG_BIT_ARB)
+	{
+		if (glDebugMessageCallback)
+		{
+			auto func = &CGLDevice::GLDebugCallback;
+			glDebugMessageCallback(func, nullptr);
+		}
+	}
 
 	// get window info
 	glm::vec2 vp_size = BackBufferSize();
@@ -265,6 +280,12 @@ glm::vec2 CGLDevice::BackBufferSize()
 	int vpHeight = rc.bottom - rc.top;
 
 	return glm::vec2(vpWidth, vpHeight);
+}
+
+void CGLDevice::GLDebugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, void* userParam)
+{
+	Debug::Print(boost::wformat(TEXT("Debug message with source 0x%04X, type 0x%04X, id %u, severity 0x%0X, '%s'\n")) 
+		% source % type % id % severity % message);
 }
 
 
