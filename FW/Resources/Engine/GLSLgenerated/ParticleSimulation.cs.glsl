@@ -3,17 +3,22 @@
 #version 430 core
 
 // uniforms
-layout (binding = 0) uniform CB00
+layout (binding = 1) uniform CB01
 {
-	float   gameTime;
+	vec4	GameTimerData;
 }CbSceneCommon;
 
-// buffers
-struct EmitterInstance
+float CurrentTime()
 {
-	vec3	Position;
-};
+	return CbSceneCommon.GameTimerData.x;
+}
 
+float DeltaTime()
+{
+	return CbSceneCommon.GameTimerData.y;
+}
+
+// buffers
 struct Particle
 {
 	vec4	Position_Id;
@@ -28,8 +33,8 @@ layout (std430, binding = 0) buffer SSBO00
 
 // Input layout qualifier declaring a 16x 16(x 1)local
 // workgroup size
-layout (local_size_x =16, local_size_y = 16) in;
+layout (local_size_x =16) in;
 void main()
 {
-	//Do nothing.
+	int pid = 
 }
