@@ -37,7 +37,7 @@ void CParticleManager::SimulateEmitter(uint32_t id)
 			// initialize new particle
 			if (p_id != INVALID_ID)
 			{
-				CParticle& particle = m_ParticleList[p_id];
+				CParticle& particle = m_ParticleSpawnList[p_id];
 				particle.Position_EmitterId = glm::vec4(emt.Position, id);
 				particle.Begintime_Lifetime = glm::vec2(curr_time, emt.ParticleLifeTime);
 				particle.Velocity = glm::normalize( glm::linearRand(glm::vec3(-0.5f, 1.0f, -0.5f), glm::vec3(0.5f, 1.0f, 0.5f)) );

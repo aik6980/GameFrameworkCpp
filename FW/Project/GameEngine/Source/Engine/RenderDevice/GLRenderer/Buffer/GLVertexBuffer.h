@@ -92,8 +92,8 @@ void CGLVertexBuffer<T>::SetData( const vector<T>& data )
 		glGenBuffers( 1, &m_BufferHandle );
 	}
 	
-	glBindBuffer(TargetType(), m_BufferHandle);
-	glBufferData(TargetType(), sizeof(T) * data.size(), &data[0],
+	glBindBuffer(GL_SHADER_STORAGE_BUFFER, m_BufferHandle);
+	glBufferData(GL_SHADER_STORAGE_BUFFER, sizeof(T)* data.size(), &data[0],
                     MapToGLBufferUsage(m_BufferUsage));
 	
 	m_Stride = sizeof(T);
@@ -132,7 +132,7 @@ void CGLIndexBuffer<T>::SetData( const vector<T>& data )
 	}
 
 	glBindBuffer(TargetType(), m_BufferHandle);
-	glBufferData(TargetType(), sizeof(T) * data.size(), &data[0],
+	glBufferData(TargetType(), sizeof(T)* data.size(), &data[0],
                     MapToGLBufferUsage(m_BufferUsage));
 
 	m_NumIndices = data.size();

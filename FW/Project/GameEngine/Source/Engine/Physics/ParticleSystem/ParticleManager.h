@@ -3,6 +3,7 @@
 
 #include "Particle.h"
 #include "Graphic/Graphic.h"
+#include "RenderDevice/RenderDevice.h"
 
 class CParticleManager
 {
@@ -23,12 +24,15 @@ private:
 
 	array<CEmitter, MAX_EMITTERS>				m_EmitterList;
 
-	array<CParticle, MAX_PARTICLES>				m_ParticleList;
+	array<CParticle, MAX_PARTICLES>				m_ParticleSpawnList;
 
 	uint32_t									m_ParticleRenderCounter;
 	array<ParticleAlive, MAX_PARTICLES>			m_ParticleRenderList;
 	uint32_t									m_ParticleDeadCounter;
 	array<ParticleDead, MAX_PARTICLES>			m_ParticleDeadList;
+
+	// Buffer
+	CGLBufferGeneric							m_ParticleList;
 
 	// GPU Program
 	CParticleSimComputeShader*					m_ParticleSimShader;

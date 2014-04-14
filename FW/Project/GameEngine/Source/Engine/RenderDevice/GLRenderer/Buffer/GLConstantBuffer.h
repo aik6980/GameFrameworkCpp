@@ -50,13 +50,15 @@ void CGLConstantBuffer<T>::SetData(const T& data )
 	if(m_BufferHandle == 0)
 	{
 		glGenBuffers(1, &m_BufferHandle);
+		glBindBuffer(GL_UNIFORM_BUFFER, m_BufferHandle);
+		glBufferData(GL_UNIFORM_BUFFER, sizeof(T), &data, GL_DYNAMIC_DRAW);
 	}
 
 	// only update data only if it's been changed
 	if((m_Data == data) == false)
 	{
 		glBindBuffer(GL_UNIFORM_BUFFER, m_BufferHandle);
-		glBufferData(GL_UNIFORM_BUFFER, sizeof(T), &data, GL_DYNAMIC_DRAW);
+		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(T), &data);
 		m_Data = data;
 	}
 }

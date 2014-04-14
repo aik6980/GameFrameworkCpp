@@ -32,4 +32,25 @@ private:
 	eTechnique m_CurrTech;
 };
 
+class CVFXParticleShader : public CBaseRenderShader
+{
+public:
+	enum eTechnique
+	{
+		MAIN,
+	};
+
+	CVFXParticleShader();
+
+	void Load();
+	void Unload();
+
+	void Apply();
+
+	eTechnique GetCurrTech() const { return m_CurrTech; }
+	void SetCurrTech(eTechnique val) { m_CurrTech = val; }
+private:
+	eTechnique m_CurrTech;
+};
+
 #endif

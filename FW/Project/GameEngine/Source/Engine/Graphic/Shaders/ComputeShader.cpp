@@ -13,7 +13,18 @@ void CParticleSimComputeShader::Load()
 
 void CParticleSimComputeShader::Apply(eTechnique t)
 {
+	switch (t)
+	{
+	case PARTICLES_SIMULATION:
+		{
+			m_ComputeTechniques[PARTICLES_SIMULATION]->Apply();
 
+			m_SSBOParticleList.Bind();
+			m_SSBOParticleDeadList.Bind();
+			m_SSBOParticleSortList.Bind();
+		}
+		break;
+	}
 }
 
 void CParticleSimComputeShader::LoadTechnique(eTechnique id, const string& name)

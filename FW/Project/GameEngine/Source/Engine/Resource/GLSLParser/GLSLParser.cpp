@@ -120,10 +120,11 @@ void CGLSLCompiler::Parse()
 	//}
 
 	// once preprocess we add some GLSL information
-	const string glsl4core = "#version 440 core\n";
-	preprocessed_contents.insert(0, glsl4core);
+	//const string glsl4core = "#version 440 core\n";
+	//preprocessed_contents.insert(0, glsl4core);
 
 	// parsing string
+	/*
 	map<string, string> source_texts;
 	{
 		const string expr("#pragma\\s+start\\s+(.+?)\\s+([\\s\\S]+?)#pragma\\s+end");
@@ -137,6 +138,7 @@ void CGLSLCompiler::Parse()
 			source_texts.insert(make_pair(key[i], value[i]));
 		}
 	}
+	*/
 
 }
 

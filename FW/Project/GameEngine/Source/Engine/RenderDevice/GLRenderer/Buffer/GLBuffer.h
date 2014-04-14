@@ -3,27 +3,36 @@
 
 #include "RenderDevice/GLRenderer/GLDefines.h"
 
-class CGLBufferBase
+class CGLBufferGeneric
 {
 public:
-	CGLBufferBase()
+	CGLBufferGeneric()
 		: m_BufferHandle(0),
-		m_InputSlot(0),
 		m_BufferType(GL_ARRAY_BUFFER),
-		m_Usage(GL_STATIC_DRAW)
+		m_Usage(GL_DYNAMIC_DRAW)
 	{}
 
-	virtual ~CGLBufferBase();
+	~CGLBufferGeneric()
+	{
+		if (m_BufferHandle)
+		{
+			glDeleteBuffers(1, &m_BufferHandle);
+		}
+	}
 
 	void		CreateBuffer(const uint32_t sizeInBytes);
 	void		SetDataRaw(const void* pData, const uint32_t sizeInBytes, const uint32_t offset);
 
-	void		SetBuffer();
-	void		InputSlot(uint32_t val) { m_InputSlot = val; }
+	template<class T>
+	void		SetData(const vector<T>& data)
+	{
+		if (m_BufferHandle == 0)
+		{
+			CreateBuffer(data.size() * sizeof(T));
+		}
+	}
 protected:
 	GLuint		m_BufferHandle;
-	uint32_t	m_InputSlot;
-
 	GLenum		m_BufferType;
 	GLenum		m_Usage;
 };

@@ -393,6 +393,7 @@
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDefines.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GLDevice.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\GpuProgram\GLTechnique.h" />
+    <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\ResourceView\GLResourceView.h" />
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\Texture\GLTexture.h" />
     <ClInclude Include="Source\Engine\RenderDevice\RenderDevice.h" />
     <ClInclude Include="Source\Engine\RenderDevice\RenderDeviceCpp.h" />

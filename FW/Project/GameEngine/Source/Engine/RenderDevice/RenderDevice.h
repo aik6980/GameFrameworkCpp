@@ -8,6 +8,8 @@
 #include "RenderDevice/D3d11Renderer/D3d11VertexBuffer.h"
 
 // OpenGL
+#include "RenderDevice/GLRenderer/ResourceView/GLResourceView.h"
+#include "RenderDevice/GLRenderer/Buffer/GLBuffer.h"
 #include "RenderDevice/GLRenderer/Buffer/GLConstantBuffer.h"
 #include "RenderDevice/GLRenderer/Buffer/GLVertexBuffer.h"
 #include "RenderDevice/GLRenderer/Buffer/GLDrawIndirectBuffer.h"

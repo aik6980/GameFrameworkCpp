@@ -29,6 +29,12 @@ struct cbViewCommon
 struct cbSceneCommon
 {
 	glm::vec4	GameTimerData; // x: CurrentTime, y: DeltaTime
+
+	bool operator == (const cbSceneCommon& rhs) const
+	{
+		bool result = (GameTimerData == rhs.GameTimerData);
+		return result;
+	}
 };
 
 struct cbObjectCommon
@@ -44,7 +50,7 @@ public:
 	CBaseShader();
 
 	static CGLConstantBuffer<cbViewCommon>		m_CbViewCommon;
-	static CGLConstantBuffer<cbObjectCommon>	m_CbSceneCommon;
+	static CGLConstantBuffer<cbSceneCommon>		m_CbSceneCommon;
 
 	virtual	const string & GetName()	{ return m_Name; }
 
