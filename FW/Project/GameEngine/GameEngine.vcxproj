@@ -364,6 +364,7 @@
     <ClInclude Include="Source\Engine\Physics\ParticleSystem\Emitter.h" />
     <ClInclude Include="Source\Engine\Physics\ParticleSystem\Particle.h" />
     <ClInclude Include="Source\Engine\Physics\ParticleSystem\ParticleManager.h" />
+    <ClInclude Include="Source\Engine\Physics\ParticleSystem\Sorter.h" />
     <ClInclude Include="Source\Engine\Physics\Physics.h" />
     <ClInclude Include="Source\Engine\Physics\PhysicsCpp.h" />
     <ClInclude Include="Source\Engine\Physics\RigidBody\Particle.h" />

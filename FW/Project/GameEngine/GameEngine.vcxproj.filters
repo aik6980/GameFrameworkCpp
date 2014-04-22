@@ -542,6 +542,9 @@
     <ClInclude Include="Source\Engine\RenderDevice\GLRenderer\ResourceView\GLResourceView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Engine\Physics\ParticleSystem\Sorter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\Core\FileSystem\FileSystem.inl">
