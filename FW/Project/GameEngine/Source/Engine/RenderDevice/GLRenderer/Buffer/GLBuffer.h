@@ -1,6 +1,8 @@
 #ifndef GLBuffer_h__
 #define GLBuffer_h__
 
+#pragma once
+
 #include "RenderDevice/GLRenderer/GLDefines.h"
 
 class CGLBufferGeneric

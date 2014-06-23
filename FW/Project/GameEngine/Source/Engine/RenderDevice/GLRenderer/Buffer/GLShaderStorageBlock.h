@@ -1,6 +1,8 @@
 #ifndef GLShaderStorageBlock_h__
 #define GLShaderStorageBlock_h__
 
+#pragma once
+
 #include "GLBuffer.h"
 
 template<class T>
