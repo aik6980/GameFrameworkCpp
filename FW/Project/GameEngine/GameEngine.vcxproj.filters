@@ -195,9 +195,6 @@
     <ClCompile Include="Source\Engine\Resource\ResourceObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\Resource\ResourceCpp.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Engine\RenderDevice\GLRenderer\Texture\GLTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -544,6 +541,9 @@
     </ClInclude>
     <ClInclude Include="Source\Engine\Physics\ParticleSystem\Sorter.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Resource\ResourceCpp.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

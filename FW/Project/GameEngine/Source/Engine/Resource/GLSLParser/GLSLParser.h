@@ -20,12 +20,12 @@ namespace fs = boost::filesystem;
 
 struct StGLSLCompilerOptions
 {
-	vector<fs::path>	m_IncludePaths;
-	fs::path			m_OutputTextFileDir;
-	fs::path			m_OutputBinFileDir;
-	vector<fs::path>	m_OutputTextFiles;
-	vector<fs::path>	m_OutputBinFile;
-	fs::path			m_InputFile;
+	list<fs::path>	m_IncludePaths;
+	fs::path		m_OutputTextFileDir;
+	fs::path		m_OutputBinFileDir;
+	list<fs::path>	m_OutputTextFiles;
+	list<fs::path>	m_OutputBinFile;
+	fs::path		m_InputFile;
 };
 
 class CGLSLCompiler
@@ -33,10 +33,24 @@ class CGLSLCompiler
 public:
 	void Initialize(const StGLSLCompilerOptions& compilerOptions);
 	void Parse();
+
+	void Process();
 private:
+	bool LoadSourceFile(const wstring& fileName);
+	bool Preprocessing(list<string>::iterator& it_curr_line);
 	void CompileShader(string str);
 
-	StGLSLCompilerOptions m_CompilerOptions;
+	bool LoadSourceFile(const wstring& fileName, list<string>::iterator& it_curr_line);
+	void HandlePredirectiveInclude(list<string>::iterator& it_curr_line);
+
+	fs::path FindIncludeFile(const string& fileName);
+
+	StGLSLCompilerOptions	m_CompilerOptions;
+
+	list<string>			m_SourceLines;
+	
+	// helper			
+	list<string>			m_IncludeFiles;
 };
 
 #endif // GLSLCompiler_h__

@@ -1,20 +1,8 @@
 // layout (binding = 2) require 420
 // SSBO requires 430
 #version 430 core
-// common code
 
-// buffer
-struct Particle
-{
-	vec4	Position_Id;
-	vec3	Velocity;
-	vec2	Begintime_Lifetime;
-};
-
-layout (std430, binding = 0) buffer SSBO00 
-{
-	Particle Data[];
-} g_ParticleInstances;
+#include "particle_shared.glsl"
 
 // input/output
 layout (location = 0) in uint 	ID;

@@ -6,6 +6,6 @@
 class CGLTexture
 {
 	
-}
+};
 
 #endif // GLTexture_h__

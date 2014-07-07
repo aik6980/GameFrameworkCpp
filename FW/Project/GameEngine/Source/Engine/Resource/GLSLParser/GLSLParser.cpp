@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "GLSLParser.h"
+
+#include "Core/CoreCpp.h"
 #include "Regex/Regex.h"
 
 // Boost Wave is a C-Preprocessor Lib,
@@ -95,6 +97,13 @@
 void CGLSLCompiler::Initialize( const StGLSLCompilerOptions& compilerOptions )
 {
 	m_CompilerOptions = compilerOptions;
+
+	// add the source file parent path to the include file path
+	if (fs::is_regular_file(m_CompilerOptions.m_InputFile))
+	{
+		const auto& parent_path = m_CompilerOptions.m_InputFile.parent_path();
+		m_CompilerOptions.m_IncludePaths.push_front(parent_path);
+	}
 }
 
 void CGLSLCompiler::Parse()
@@ -140,5 +149,75 @@ void CGLSLCompiler::Parse()
 	}
 	*/
 
+}
+
+bool CGLSLCompiler::LoadSourceFile(const wstring& fileName)
+{
+	// clear the source lines buffer
+	m_SourceLines.clear();
+	m_IncludeFiles.clear();
+
+	return LoadSourceFile(fileName, m_SourceLines.begin());
+}
+
+bool CGLSLCompiler::LoadSourceFile(const wstring& fileName, list<string>::iterator& it_curr_line)
+{
+	ifstream file_in(fileName);
+	if (file_in.is_open())
+	{
+		// insert behind the current line
+		list<string>::iterator it_next_line = it_curr_line;
+		if (it_next_line != m_SourceLines.end())
+		{
+			it_next_line++;
+		}
+
+		string line;
+		while (getline(file_in, line))
+		{
+			m_SourceLines.insert(it_next_line, line);
+		}
+
+		file_in.close();
+	}
+	else
+	{
+		Debug::Print((boost::wformat(TEXT("path not found %s")) % fileName));
+		return false;
+	}
+
+	return true;
+}
+
+bool CGLSLCompiler::Preprocessing(list<string>::iterator& it_curr_line)
+{
+	while (it_curr_line != m_SourceLines.end())
+	{
+		if (it_curr_line->find("#include") != string::npos)
+		{
+			// handle #include
+			HandlePredirectiveInclude(it_curr_line);
+		}
+
+		it_curr_line++;
+	}
+
+	return true;
+}
+
+void CGLSLCompiler::HandlePredirectiveInclude(list<string>::iterator& it_curr_line)
+{
+	int32_t file_name_start = it_curr_line->find_first_of("<\"");
+	int32_t file_name_end = it_curr_line->find_first_of(">\"");
+	if (file_name_start != string::npos && file_name_end != string::npos)
+	{
+		string file_name = it_curr_line->substr(file_name_start, file_name_end);
+	}
+}
+
+void CGLSLCompiler::Process()
+{
+	LoadSourceFile(m_CompilerOptions.m_InputFile.wstring());
+	Preprocessing(m_SourceLines.begin());
 }
 

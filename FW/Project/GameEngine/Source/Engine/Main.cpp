@@ -5,6 +5,7 @@
 #include "Scene/World.h"
 #include "Scene/Scene.h"
 
+#include "Resource/ResourceCpp.h"
 #include "Input/InputManager.h"
 
 class MyGame : public CWinGameApplication
@@ -45,6 +46,14 @@ int main(int numArgs, char** args)
 		if(strcmp(args[1], "--ToolMode")==0)
 		{
 			Debug::Print("Start ToolMode");
+
+			// GLSL Compiler
+			CGLSLCompiler glslCompiler;
+			StGLSLCompilerOptions glslCompilerOptions;
+			glslCompilerOptions.m_InputFile = args[2];
+
+			glslCompiler.Initialize(glslCompilerOptions);
+			glslCompiler.Process();
 		}
 	}
 	else
