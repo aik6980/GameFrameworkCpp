@@ -8,6 +8,8 @@
 layout (location = 0) in uint 	ID;
 layout (location = 1) in float 	DISTANCE;
 
+#include "particle_shared.glsl"
+
 out block
 {
 	vec4 Color0;

@@ -50,7 +50,7 @@ private:
 	list<string>			m_SourceLines;
 	
 	// helper			
-	list<string>			m_IncludeFiles;
+	list<fs::path>			m_IncludeFiles;
 };
 
 #endif // GLSLCompiler_h__

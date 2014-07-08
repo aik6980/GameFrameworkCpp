@@ -151,6 +151,28 @@ void CGLSLCompiler::Parse()
 
 }
 
+fs::path CGLSLCompiler::FindIncludeFile(const string& fileName)
+{
+	for (const auto& includeDir : m_CompilerOptions.m_IncludePaths)
+	{
+		fs::path fn(includeDir);
+		fn /= fileName;
+		if (fs::is_regular_file(fn))
+		{
+			// check if we haven't already include this file
+			auto found_it = find(m_IncludeFiles.begin(), m_IncludeFiles.end(), fn);
+			if (found_it == m_IncludeFiles.end())
+			{
+				// found a valid include file, added to the list
+				m_IncludeFiles.push_back(fn);
+				return fn;
+			}
+		}
+	}
+
+	return fs::path();
+}
+
 bool CGLSLCompiler::LoadSourceFile(const wstring& fileName)
 {
 	// clear the source lines buffer
@@ -208,10 +230,35 @@ bool CGLSLCompiler::Preprocessing(list<string>::iterator& it_curr_line)
 void CGLSLCompiler::HandlePredirectiveInclude(list<string>::iterator& it_curr_line)
 {
 	int32_t file_name_start = it_curr_line->find_first_of("<\"");
-	int32_t file_name_end = it_curr_line->find_first_of(">\"");
+	int32_t file_name_end = it_curr_line->find_first_of(">\"", file_name_start + 1);
 	if (file_name_start != string::npos && file_name_end != string::npos)
 	{
-		string file_name = it_curr_line->substr(file_name_start, file_name_end);
+		
+
+		int32_t start = file_name_start + 1;
+		string file_name = it_curr_line->substr(start, file_name_end - start);
+		fs::path include_file_full = FindIncludeFile(file_name);
+
+		
+
+		if (fs::is_regular_file(include_file_full))
+		{
+			// transform this line into a comment
+			*it_curr_line = "//-- BEGIN INCLUDE " + include_file_full.string();
+			list<string>::iterator it_next_line = it_curr_line;
+			it_next_line++;
+			m_SourceLines.insert(it_next_line, "//-- END INCLUDE --//");
+
+			LoadSourceFile(include_file_full.wstring(), it_curr_line);
+		}
+		else
+		{
+			it_curr_line = m_SourceLines.erase(it_curr_line);
+		}
+	}
+	else
+	{
+		// report error about #include here
 	}
 }
 
@@ -220,4 +267,6 @@ void CGLSLCompiler::Process()
 	LoadSourceFile(m_CompilerOptions.m_InputFile.wstring());
 	Preprocessing(m_SourceLines.begin());
 }
+
+
 
