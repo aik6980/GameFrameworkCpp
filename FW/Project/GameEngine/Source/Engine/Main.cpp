@@ -7,6 +7,7 @@
 
 #include "Resource/ResourceCpp.h"
 #include "Input/InputManager.h"
+#include "RenderDevice/RenderDeviceCpp.h"
 
 class MyGame : public CWinGameApplication
 {
@@ -21,11 +22,36 @@ APPLICATION_DEFINE_INITIALIZE( MyGame, CWinGameApplication );
 
 void MyGame::OnInit( int numArgs, char** args )
 {
-	// Initialize our subsystem
-	Global::SInit initData;
-	initData.m_WndHandle	= GetHwnd();
-	initData.m_DCHandle		= GetDC()->GetHDC();
-	Global::Initialize(initData);
+	if (m_CmdLineMode)
+	{
+		if (strcmp(args[1], "--ToolMode") == 0)
+		{
+			// GLSL Compiler
+			CGLDevice glRenderDevice;
+			{
+				CGLDevice::tInitStruct initDataRenderer;
+				initDataRenderer.hwnd = m_hWnd;
+				initDataRenderer.bWaitForVSync = false;
+				glRenderDevice.Initialize(initDataRenderer);
+			}
+
+			CGLSLCompiler glslCompiler;
+			StGLSLCompilerOptions glslCompilerOptions;
+			glslCompilerOptions.m_InputFile = args[2];
+
+			glslCompiler.Initialize(glslCompilerOptions);
+			CGLCommonGpuProgram* compiled_gpu_prog = glslCompiler.Process();
+			Safe_Delete(compiled_gpu_prog);
+		}
+	}
+	else
+	{
+		// Initialize our subsystem
+		Global::SInit initData;
+		initData.m_WndHandle = GetHwnd();
+		initData.m_DCHandle = GetDC()->GetHDC();
+		Global::Initialize(initData);
+	}
 }
 
 void MyGame::OnUpdate()
@@ -41,24 +67,5 @@ void MyGame::OnUpdate()
 // main program entry point
 int main(int numArgs, char** args)
 {
-	if(numArgs>1)
-	{
-		if(strcmp(args[1], "--ToolMode")==0)
-		{
-			Debug::Print("Start ToolMode");
-
-			// GLSL Compiler
-			CGLSLCompiler glslCompiler;
-			StGLSLCompilerOptions glslCompilerOptions;
-			glslCompilerOptions.m_InputFile = args[2];
-
-			glslCompiler.Initialize(glslCompilerOptions);
-			glslCompiler.Process();
-		}
-	}
-	else
-	{
-		Debug::Print("Start GameMode");
-		MyGame::Run(0, NULL);
-	}
+	MyGame::Run(numArgs, args);
 }

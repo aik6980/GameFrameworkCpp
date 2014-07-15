@@ -5,17 +5,27 @@
 int CWinGameApplication::Run( int numArgs, char** Args )
 {
 	((CWinGameApplication*)INSTANCE)->m_bRunning = true;
+	((CWinGameApplication*)INSTANCE)->InitWindow(numArgs, Args);
+
 	return ((CWinGameApplication*)INSTANCE)->CWinApp::Run();
 }
 
-BOOL CWinGameApplication::InitInstance()
+void CWinGameApplication::InitWindow(int numArgs, char** Args)
 {
+	if (numArgs>1)
+	{
+		Debug::Print("Start CmdLineMode");
+		m_CmdLineMode = true;
+		m_bRunning = false;
+	}
+	else
+	{
+		Debug::Print("Start GameMode");
+	}
+
 	// create main windows
 	CWnd::Create();
-
-	OnInit(0, NULL);
-	// Win32++ return TRUE on successful
-	return TRUE;
+	OnInit(numArgs, Args);
 }
 
 int CWinGameApplication::MessageLoop()
@@ -44,9 +54,19 @@ int CWinGameApplication::MessageLoop()
 
 void CWinGameApplication::PreCreate( CREATESTRUCT& cs )
 {
-	// set windows size
-	cs.cx = Renderer::SCREEN_WIDTH;
-	cs.cy = Renderer::SCREEN_HEIGHT; 
+	if (m_CmdLineMode)
+	{
+		// set windows size
+		cs.cx = cs.cy = 1;
+		// set window style
+		cs.style = WS_POPUP;
+	}
+	else
+	{
+		// set windows size
+		cs.cx = Renderer::SCREEN_WIDTH;
+		cs.cy = Renderer::SCREEN_HEIGHT;
+	}
 }
 
 LRESULT CWinGameApplication::WndProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
@@ -66,3 +86,5 @@ LRESULT CWinGameApplication::WndProc( UINT uMsg, WPARAM wParam, LPARAM lParam )
 
 	return WndProcDefault(uMsg, wParam, lParam);
 }
+
+

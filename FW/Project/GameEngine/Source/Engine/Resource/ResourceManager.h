@@ -17,10 +17,13 @@ public:
 	void LoadSingleResource(const wstring& val);
 
 	CResourceObject* Get(eResourceType t, const string& name);
+
+	static void 	FindResourceTypeFromPath(CResourceObject & obj);
 private:
 	fs::path		MakeFullPath(const fs::path& val);
 	wstring			FindResourceNameFromPath(CResourceObject & obj);
-	eResourceType	FindResourceTypeFromPath(CResourceObject & obj);
+
+	static void		FindShaderTypeFromPath(CResourceObject & obj);
 
 	fs::path			m_ResourceRoot;
 	vector<fs::path>	m_ResourcePaths;

@@ -15,8 +15,9 @@ using namespace std;
 
 namespace fs = boost::filesystem;
 
-// GL include
+#include "RenderDevice/RenderDevice.h"
 
+// GL include
 
 struct StGLSLCompilerOptions
 {
@@ -34,14 +35,17 @@ public:
 	void Initialize(const StGLSLCompilerOptions& compilerOptions);
 	void Parse();
 
-	void Process();
+	CGLCommonGpuProgram* Process();
 private:
 	bool LoadSourceFile(const wstring& fileName);
 	bool Preprocessing(list<string>::iterator& it_curr_line);
-	void CompileShader(string str);
+	void CompileShader();
 
 	bool LoadSourceFile(const wstring& fileName, list<string>::iterator& it_curr_line);
 	void HandlePredirectiveInclude(list<string>::iterator& it_curr_line);
+
+	void OutputPreprocessedFile(const fs::path& fileName);
+	void OutputErrorFile();
 
 	fs::path FindIncludeFile(const string& fileName);
 

@@ -18,6 +18,7 @@
 
 // includes ////////////////////////////////////////
 #include "Core/Core.h"
+#include "Resource/Resource.h"
 #include "RenderDevice/GLRenderer/GLDefines.h"
 #include "RenderDevice/GLRenderer/Buffer/GLVertexInputLayout.h"
 
@@ -28,13 +29,19 @@ public:
 	CGLCommonGpuProgram();
 	virtual ~CGLCommonGpuProgram();
 
+	static GLint	ShaderType(const Renderer::ShaderType t);
+
 	virtual GLint	ShaderType()=0;
 	virtual void	Apply()=0;
 
-	bool			Compile(const fs::path & fn );
+	bool			Compile(const string& src);
+	bool			Compile(const fs::path & fn);
+
 	GLuint			ShaderProgramHandle() const			{ return m_ShaderProgramHandle; }
+	const string&	Error() const						{ return m_ErrorString; }
 private:
 	GLuint			m_ShaderProgramHandle;
+	string			m_ErrorString;
 	
 };
 
@@ -86,8 +93,9 @@ public:
 
 	const string&			GetName() const { return m_Name; }
 	void					SetName(const string& val) { m_Name = val; }
+
+	static CGLCommonGpuProgram*	CreateAndCompile(Renderer::ShaderType t, const string& source);
 protected:
-	CGLCommonGpuProgram*	CreateAndCompile(Renderer::ShaderType t, const fs::path & fn);
 	bool					LinkShaders(CGLCommonGpuProgram** shaders, uint32_t num_elems);
 
 	string					m_Name;
@@ -102,7 +110,7 @@ public:
 		m_Shaders.assign(nullptr);
 	}
 
-	bool					Load(Renderer::ShaderType t, const fs::path & fn);
+	bool					Load(const CResourceObject& resource_obj);
 	virtual void			Apply();
 
 	template<class T> 
@@ -119,7 +127,7 @@ public:
 		m_Shaders.assign(nullptr);
 	}
 
-	bool					Load(const fs::path & fn);
+	bool					Load(const CResourceObject& resource_obj);
 	virtual void			Apply();
 private:
 	array<CGLCommonGpuProgram*, 1>	m_Shaders;

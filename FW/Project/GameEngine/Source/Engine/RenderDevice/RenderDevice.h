@@ -17,6 +17,7 @@
 // Forward Declaration
 class CD3d11Device;
 
+class CGLCommonGpuProgram;
 class CGLRenderTechnique;
 class CGLComputeTechnique;
 

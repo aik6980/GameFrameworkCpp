@@ -1,15 +1,7 @@
 // layout (binding = 2) require 420
 #version 420 core
 
-// uniforms
-layout (binding = 0) uniform CB00
-{
-    mat4x4 ViewXf;
-    mat4x4 ProjectionXf;
-    mat4x4 ViewIXf;
-    mat4x4 ProjectionIXf;
-    mat4x4 ViewProjectionIXf;
-}CbViewCommon;
+#include "shared.inc.glsl"
 
 // static 
 

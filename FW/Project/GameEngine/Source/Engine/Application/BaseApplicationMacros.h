@@ -9,7 +9,7 @@ public: \
 
 //----------------------------------------------------------------------------
 #define APPLICATION_REGISTER_INITIALIZE(classname) \
-	bool CBaseApplication::ms_bInitializeRegistered = \
+	bool ms_bInitializeRegistered = \
 	classname::Initialize ();
 
 //----------------------------------------------------------------------------

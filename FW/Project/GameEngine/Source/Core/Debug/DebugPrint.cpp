@@ -20,11 +20,14 @@ void Debug::Print( const char* format, ... )
 
 	vsprintf_s<g_debugStrBufferSize>(g_debugStrBuffer, format, argList);
 
-#ifdef DEF_HAVECONSOLE
-	cout << format;
-#else
-	OutputDebugStringA(format);
-#endif
+	if (IsDebuggerPresent())
+	{
+		OutputDebugStringA(format);
+	}
+	else
+	{
+		cout << format;
+	}
 
 	va_end(argList);
 }
@@ -35,12 +38,14 @@ void Debug::Print(const std::string& str )
 	// automatically add \n
 	g_debugStrOut = str + "\n";
 
-#ifdef DEF_HAVECONSOLE
-	cout << g_debugStrOut;
-#else
-	OutputDebugStringA(g_debugStrOut.c_str());
-#endif
-
+	if (IsDebuggerPresent())
+	{
+		OutputDebugStringA(g_debugStrOut.c_str());
+	}
+	else
+	{
+		cout << g_debugStrOut;
+	}
 }
 
 std::wstring g_debugWStrOut;
@@ -49,11 +54,14 @@ void Debug::Print( const std::wstring& wstr )
 	// automatically add \n
 	g_debugWStrOut = wstr + TEXT("\n");
 
-#ifdef DEF_HAVECONSOLE
-	wcout << g_debugWStrOut;
-#else
-	OutputDebugString(g_debugWStrOut.c_str());
-#endif
+	if (IsDebuggerPresent())
+	{
+		OutputDebugString(g_debugWStrOut.c_str());
+	}
+	else
+	{
+		wcout << g_debugWStrOut;
+	}
 
 }
 

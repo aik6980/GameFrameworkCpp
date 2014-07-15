@@ -8,18 +8,25 @@
 class CWinGameApplication : public CGameApplication, public CWinApp, public CWnd
 {
 public:
+	CWinGameApplication()
+		: m_CmdLineMode(false)
+	{}
+
 	// entry point
 	static int Run(int numArgs, char** Args);
 
 	// overridden winapp
-	virtual BOOL InitInstance();
-	virtual int MessageLoop();
+	virtual int		MessageLoop();
 
-	// overriden cwnd
+	virtual void	InitWindow(int numArgs, char** Args);
 protected:
-	virtual void PreCreate(CREATESTRUCT& cs);
+	// overriden cwnd
+	virtual void	PreCreate(CREATESTRUCT& cs);
 	virtual LRESULT WndProc( UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+	bool m_CmdLineMode;
 private:
+	
 };
 
 

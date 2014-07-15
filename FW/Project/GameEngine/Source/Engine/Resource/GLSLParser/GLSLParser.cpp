@@ -2,7 +2,12 @@
 #include "GLSLParser.h"
 
 #include "Core/CoreCpp.h"
+#include "RenderDevice/RenderDeviceCpp.h"
+
 #include "Regex/Regex.h"
+
+#include "Resource/ResourceObject.h"
+#include "Resource/ResourceManager.h"
 
 // Boost Wave is a C-Preprocessor Lib,
 // it doesn't seem to work the way I want it to work  
@@ -103,6 +108,23 @@ void CGLSLCompiler::Initialize( const StGLSLCompilerOptions& compilerOptions )
 	{
 		const auto& parent_path = m_CompilerOptions.m_InputFile.parent_path();
 		m_CompilerOptions.m_IncludePaths.push_front(parent_path);
+
+		// if there is no output folder defined, assume the output directory to be the same as the input
+		if (m_CompilerOptions.m_OutputTextFileDir.empty())
+		{
+			m_CompilerOptions.m_OutputTextFileDir = parent_path;
+		}
+
+		if (m_CompilerOptions.m_OutputTextFiles.empty())
+		{
+			const auto& parent_path = m_CompilerOptions.m_InputFile.parent_path();
+			auto file_name = m_CompilerOptions.m_InputFile.stem().stem().string();
+			boost::algorithm::to_lower(file_name);
+			file_name += "_generated";
+			file_name += m_CompilerOptions.m_InputFile.stem().extension().string() + m_CompilerOptions.m_InputFile.extension().string();
+
+			m_CompilerOptions.m_OutputTextFiles.push_back(file_name);
+		}
 	}
 }
 
@@ -234,12 +256,9 @@ void CGLSLCompiler::HandlePredirectiveInclude(list<string>::iterator& it_curr_li
 	if (file_name_start != string::npos && file_name_end != string::npos)
 	{
 		
-
 		int32_t start = file_name_start + 1;
 		string file_name = it_curr_line->substr(start, file_name_end - start);
 		fs::path include_file_full = FindIncludeFile(file_name);
-
-		
 
 		if (fs::is_regular_file(include_file_full))
 		{
@@ -262,11 +281,86 @@ void CGLSLCompiler::HandlePredirectiveInclude(list<string>::iterator& it_curr_li
 	}
 }
 
-void CGLSLCompiler::Process()
+void CGLSLCompiler::OutputPreprocessedFile(const fs::path& fileName)
+{
+	if (fs::is_directory(m_CompilerOptions.m_OutputTextFileDir))
+	{
+		const auto fn = m_CompilerOptions.m_OutputTextFileDir / fileName;
+
+		ofstream h_file(fn.string(), ios::out | ios::trunc);
+		if (h_file.is_open())
+		{
+			for (const auto& l : m_SourceLines)
+			{
+				h_file << l << endl;
+			}
+			h_file.close();
+		}
+	}
+}
+
+void CGLSLCompiler::OutputErrorFile()
+{
+	if (fs::is_directory(m_CompilerOptions.m_OutputTextFileDir))
+	{
+		auto error_dir = m_CompilerOptions.m_OutputTextFileDir / fs::path("error");
+		if (!fs::is_directory(error_dir))
+		{
+			fs::create_directory(error_dir);
+		}
+
+		if (fs::is_directory(error_dir))
+		{
+			fs::path new_name = "error_" + m_CompilerOptions.m_OutputTextFiles.front().filename().string();
+
+			const auto fn = error_dir / new_name;
+			ofstream h_file(fn.string(), ios::out | ios::trunc);
+			if (h_file.is_open())
+			{
+				for (const auto& l : m_SourceLines)
+				{
+					h_file << l << endl;
+				}
+				h_file.close();
+			}
+		}
+	}
+}
+
+CGLCommonGpuProgram* CGLSLCompiler::Process()
 {
 	LoadSourceFile(m_CompilerOptions.m_InputFile.wstring());
 	Preprocessing(m_SourceLines.begin());
+
+	//OutputPreprocessedFile();
+
+	// Compile Shader
+	CResourceObject resource_obj;
+	resource_obj.m_Path = m_CompilerOptions.m_InputFile;
+	CResourceManager::FindResourceTypeFromPath(resource_obj);
+
+	stringstream ss;
+	for (const auto& l : m_SourceLines)
+	{
+		ss << l << endl;
+	}
+	CGLCommonGpuProgram* gpu_program = CGLTechniqueCommon::CreateAndCompile(resource_obj.m_ShaderType, ss.str());
+	if (gpu_program)
+	{
+		if (!gpu_program->Error().empty())
+		{
+			m_SourceLines.push_back(gpu_program->Error());
+			OutputErrorFile();
+		}
+		else
+		{
+			Debug::Print(boost::wformat(TEXT("Successfully Compiled: %1%")) % resource_obj.m_Path.wstring());
+		}
+	}
+
+	return gpu_program;
 }
+
 
 
 

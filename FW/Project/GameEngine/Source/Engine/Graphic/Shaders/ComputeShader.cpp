@@ -34,7 +34,7 @@ void CParticleSimComputeShader::LoadTechnique(eTechnique id, const string& name)
 	{
 		CGLComputeTechnique* t = new CGLComputeTechnique();
 		t->SetName(name);
-		t->Load(src->m_Path);
+		t->Load(*src);
 
 		m_ComputeTechniques.insert(make_pair(id, t));
 	}

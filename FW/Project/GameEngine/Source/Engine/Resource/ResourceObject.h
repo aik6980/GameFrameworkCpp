@@ -19,6 +19,7 @@
 // includes ////////////////////////////////////////
 #include <gli/gli.hpp>
 #include "Core/Core.h"
+#include "RenderDevice/RenderDevice.h"
 
 enum eResourceType
 {
@@ -35,6 +36,11 @@ public:
 	fs::path		m_Path;
 	string			m_Name;
 	eResourceType	m_Type;
+
+	union
+	{
+		Renderer::ShaderType	m_ShaderType;
+	};
 
 	uint8_t*		m_Data;
 	uint32_t		m_Size;

@@ -21,9 +21,9 @@ void CVFXRibbonShader::Load()
 		{
 			CGLRenderTechnique* t = new CGLRenderTechnique();
 			t->SetName("Main");
-			t->Load(Renderer::SHA_VERTEX_SHADER, vs_src->m_Path);
-			t->Load(Renderer::SHA_GEOM_SHADER, gs_src->m_Path);
-			t->Load(Renderer::SHA_PIXEL_SHADER, ps_src->m_Path);
+			t->Load(*vs_src);
+			t->Load(*gs_src);
+			t->Load(*ps_src);
 
 			// manually create an input desc
 			CGLVertexInputLayout ia;

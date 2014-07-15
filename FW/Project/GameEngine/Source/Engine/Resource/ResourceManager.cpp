@@ -22,7 +22,7 @@ void CResourceManager::Initialize()
 	m_ResourceRoot = FileSystem::GetResourcesPath();
 
 	m_ResourcePaths.resize(NUM_RESOURCETYPE);
-	m_ResourcePaths[GPUPROGRAM] = fs::path(L"/Engine/GLSLgenerated/");
+	m_ResourcePaths[GPUPROGRAM] = fs::path(L"/Engine/glsl/");
 }
 
 void CResourceManager::LoadSingleResource( const wstring& fn )
@@ -30,7 +30,7 @@ void CResourceManager::LoadSingleResource( const wstring& fn )
 	CResourceObject res_obj;
 	res_obj.m_Path = MakeFullPath(fn);
 	res_obj.m_Name = CSTLHelper::String(FindResourceNameFromPath(res_obj));
-	res_obj.m_Type = FindResourceTypeFromPath(res_obj);
+	FindResourceTypeFromPath(res_obj);
 
 	m_GPUPrograms.insert(std::make_pair(res_obj.m_Name, res_obj));
 }
@@ -57,14 +57,43 @@ fs::path CResourceManager::MakeFullPath( const fs::path& val )
 	return p;
 }
 
-eResourceType CResourceManager::FindResourceTypeFromPath( CResourceObject & obj )
+void CResourceManager::FindResourceTypeFromPath( CResourceObject & obj )
 {
-	if(obj.m_Path.wstring().find(m_ResourcePaths[GPUPROGRAM].wstring()) != -1)
+	if(obj.m_Path.extension().string() == ".glsl")
 	{
-		return GPUPROGRAM;
+		obj.m_Type = GPUPROGRAM;
+		FindShaderTypeFromPath(obj);
 	}
 
-	return UNDEFINED;
+	obj.m_Type = UNDEFINED;
+}
+
+void CResourceManager::FindShaderTypeFromPath(CResourceObject & obj)
+{
+	Debug::Assert(obj.m_Type == GPUPROGRAM, "ShaderType is only available for GPUPROGRAM");
+
+	// find subtype
+	const string& shader_type_str = obj.m_Path.stem().extension().string();
+	if (shader_type_str == ".vs")
+	{
+		obj.m_ShaderType = Renderer::SHA_VERTEX_SHADER;
+	}
+	else if (shader_type_str == ".gs")
+	{
+		obj.m_ShaderType = Renderer::SHA_GEOM_SHADER;
+	}
+	else if (shader_type_str == ".ps")
+	{
+		obj.m_ShaderType = Renderer::SHA_PIXEL_SHADER;
+	}
+	else if (shader_type_str == ".cs")
+	{
+		obj.m_ShaderType = Renderer::SHA_COMPUTE_SHADER;
+	}
+	else
+	{
+		Debug::Print("Unsupported ShaderType");
+	}
 }
 
 std::wstring CResourceManager::FindResourceNameFromPath( CResourceObject & obj )
@@ -93,6 +122,7 @@ CResourceObject* CResourceManager::Get( eResourceType t, const string& name )
 
 	return nullptr;
 }
+
 
 
 // eof /////////////////////////////////////////////
