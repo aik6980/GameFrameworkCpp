@@ -42,9 +42,9 @@ void CResourceManager::LoadAll()
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"SpriteShader.ps.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"RigidShader.vs.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"RigidShader.ps.glsl");
-	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.vs.glsl");
-	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.gs.glsl");
-	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleGS.ps.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"vfx_ribbon.vs.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"vfx_ribbon.gs.glsl");
+	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"vfx_ribbon.ps.glsl");
 	// Compute
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleEmit.cs.glsl");
 	LoadSingleResource(m_ResourcePaths[GPUPROGRAM].wstring() + L"ParticleSimulation.cs.glsl");

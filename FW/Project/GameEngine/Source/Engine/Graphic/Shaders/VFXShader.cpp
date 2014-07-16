@@ -14,9 +14,9 @@ CVFXRibbonShader::CVFXRibbonShader()
 void CVFXRibbonShader::Load()
 {
 	{
-		CResourceObject* vs_src = Global::ResourceManager().Get(GPUPROGRAM, "ParticleGS.vs");
-		CResourceObject* gs_src = Global::ResourceManager().Get(GPUPROGRAM, "ParticleGS.gs");
-		CResourceObject* ps_src = Global::ResourceManager().Get(GPUPROGRAM, "ParticleGS.ps");
+		CResourceObject* vs_src = Global::ResourceManager().Get(GPUPROGRAM, "vfx_ribbon.vs");
+		CResourceObject* gs_src = Global::ResourceManager().Get(GPUPROGRAM, "vfx_ribbon.gs");
+		CResourceObject* ps_src = Global::ResourceManager().Get(GPUPROGRAM, "vfx_ribbon.ps");
 		if (vs_src && gs_src && ps_src)
 		{
 			CGLRenderTechnique* t = new CGLRenderTechnique();
